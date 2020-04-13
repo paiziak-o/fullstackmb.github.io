@@ -67,7 +67,7 @@
         <div class="event-img"><img v-bind:src="nextEvent.logo" alt="event logo"></div>
         <div class="event-info">
           <div class="title">{{ nextEvent.title }}</div>
-          <div class="description" v-html="nextEvent.description">
+          <div class="description" v-html="nextEvent.descriptionHtml">
         </div>
         <div class="presenter"></div>
         <div class="details">
@@ -76,7 +76,7 @@
           </div>
           <div class="venue">
             <div class="icon"><i class="fa fa-map-marker"></i></div>
-            <div class="name">{{ nextEvent.venue.title }}</div>
+            <div class="name">{{ nextEvent.venue.name}}</div>
             <div class="address">{{ nextEvent.venue.address }}</div>
           </div>
         </div>
@@ -231,8 +231,19 @@
       el: "#app",
       mounted () {
         this.getBoard();
+        this.getSponsors();
+        this.getEvents();
+        this.getVideos();
       },
       methods: {
+        getVideos: () => {
+          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/videos")
+            .then(response => {
+              app.videos = response.data.videos.slice(0,3);
+              console.log(response.data.videos);
+            })
+            .catch(error => console.error(error));
+        },
         getBoard: () => {
           axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/board")
             .then(response => {
@@ -240,70 +251,36 @@
                 console.log(response.data);
             })
             .catch(error => console.error(error));
-        } },
+        },
+        getEvents: () => {
+          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/events")
+            .then(response => {
+              let events = response.data.events;
+              if (events.length > 0) { 
+                [app.nextEvent, ...app.upcomingEvents] = events; 
+                app.nextEvent.descriptionHtml = "<p>" + app.nextEvent.description.split('\n').join("</p><p>") + "</p>";
+              }
+              else {
+                app.nextEvent = null;
+                app.upcomingEvents = [];
+              }
+              console.log(response.data);
+            })
+            .catch(error => console.error(error));
+        },
+        getSponsors: () => {
+          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/sponsors")
+            .then(response => {
+              app.sponsors = response.data.sponsors;
+              console.log(response.data);
+            })
+            .catch(error => console.error(error));
+        }
+      },
       data: function () { return {
         board: [],
-        nextEvent: {
-          "title": "Full Stack Code and Coffee",
-          "date": "2020-04-22T22:00:00.0000000Z",
-          "id": "lmdlprybcgbdc",
-          "description": "<p>Have you got a project you want to work on but don't have time at work? Have questions to ask your peers? Some cool code to show off?</p><p>This is your opportunity! Have a beverage of your preference and share some awesome code with your peers.</p><p>Coffee sponsored by Online Business Systems.</p><p>No agenda, come and go.</p>",
-          "enddate": "2020-04-23T00:00:00.0000000Z",
-          "status": "upcoming",
-          "logo": "https://secure.meetupstatic.com/photos/event/1/9/8/b/600_479406539.jpeg",
-          "link": "https://www.meetup.com/fullstackmb/events/lmdlprybcgbdc/",
-          "venue": {
-            "name": "Across the Board Game Café",
-            "address": "",
-            "id": "26056675"
-          }
-        },
-        upcomingEvents: [
-  {
-        "title": "Full Stack Code and Coffee",
-        "date": "2020-05-06T22:00:00.0000000Z",
-        "id": "lmdlprybchbjb",
-        "description": "Have you got a project you want to work on but don't have time at work? Have questions to ask your peers? Some cool code to show off?\nThis is your opportunity! Have a beverage of your preference and share some awesome code with your peers.\nCoffee sponsored by Online Business Systems.\nNo agenda, come and go.",
-        "enddate": "2020-05-07T00:00:00.0000000Z",
-        "status": "upcoming",
-        "logo": "https://secure.meetupstatic.com/photos/event/1/9/8/b/600_479406539.jpeg",
-        "link": "https://www.meetup.com/fullstackmb/events/lmdlprybchbjb/",
-        "venue": {
-          "name": "Across the Board Game Café",
-          "address": "",
-          "id": "26056675"
-        }
-      },
-      {
-        "title": "Full Stack Code and Coffee",
-        "date": "2020-05-20T22:00:00.0000000Z",
-        "id": "lmdlprybchbbc",
-        "description": "Have you got a project you want to work on but don't have time at work? Have questions to ask your peers? Some cool code to show off?\nThis is your opportunity! Have a beverage of your preference and share some awesome code with your peers.\nCoffee sponsored by Online Business Systems.\nNo agenda, come and go.",
-        "enddate": "2020-05-21T00:00:00.0000000Z",
-        "status": "upcoming",
-        "logo": "https://secure.meetupstatic.com/photos/event/1/9/8/b/600_479406539.jpeg",
-        "link": "https://www.meetup.com/fullstackmb/events/lmdlprybchbbc/",
-        "venue": {
-          "name": "Across the Board Game Café",
-          "address": "",
-          "id": "26056675"
-        }
-      },
-      {
-        "title": "Full Stack Code and Coffee",
-        "date": "2020-06-03T22:00:00.0000000Z",
-        "id": "lmdlprybcjbfb",
-        "description": "Have you got a project you want to work on but don't have time at work? Have questions to ask your peers? Some cool code to show off?\nThis is your opportunity! Have a beverage of your preference and share some awesome code with your peers.\nCoffee sponsored by Online Business Systems.\nNo agenda, come and go.",
-        "enddate": "2020-06-04T00:00:00.0000000Z",
-        "status": "upcoming",
-        "logo": "https://secure.meetupstatic.com/photos/event/1/9/8/b/600_479406539.jpeg",
-        "link": "https://www.meetup.com/fullstackmb/events/lmdlprybcjbfb/",
-        "venue": {
-          "name": "Across the Board Game Café",
-          "address": "",
-          "id": "26056675"
-        }
-      } ],
+        nextEvent: null,
+        upcomingEvents: [ ],
         videos: [
     {
       "title": "The not-too-scary Introduction to Parser Combinators in Scala with Craig Tataryn",
