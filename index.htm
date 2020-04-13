@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Full Stack MB</title>
+  <meta charset="urf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css">
+  <link rel="stylesheet" href="http://fullstackmb.ca/assets/stylesheets/style.css">
+  <link rel="stylesheet" href="http://fullstackmb.ca/assets/stylesheets/pnotify.custom.min.css" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="scripts/moment.min.js"></script>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <header>
+      <div class="nav-social">
+        <ul class="nav-menu">
+          <li><a href="#next-event">Next Event</a></li>
+          <li><a href="#past-events">Past Events</a></li>
+          <li><a href="#subscribe">Subscribe</a></li>
+          <li><a href="#sponsors">Sponsors</a></li>
+          <li><a href="#contact-us">Contact Us</a></li>
+        </ul>
+        <div class="slack-form">
+          <a class="sm-link" href="http://slack.winnipegdotnet.org" target="_blank"><i class="fa fa-slack"></i>slack</a>
+          <div class="form-group">
+            <i class="fa fa-slack"></i><input type="email" id="email" class="form-control"
+              placeholder="you@domain.com"><label for="email">slack</label>
+          </div>
+        </div>
+        <div class="social-icons"><a title="Follow us on Twitter." class="sm-link" href="https://twitter.com/wpgnetug"
+            target="_blank">
+            <span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i
+                class="fa fa-stack-1x fa-twitter"></i></span>Follow</a><a title="Like us on Facebook" class="sm-link"
+            href="https://www.facebook.com/winnipegdotnet" target="_blank">
+            <span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i
+                class="fa fa-stack-1x fa-facebook"></i></span>Like</a><a
+            title="Subscribe to our YouTube channel to get notifications" class="sm-link"
+            href="https://www.youtube.com/channel/UC6OzdI6-htXE_97zamJRaaA" target="_blank">
+            <span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i
+                class="fa fa-stack-1x fa-youtube-play"></i></span>Subscribe</a><a
+            title="Fork us on GitHub and collaborate" class="sm-link"
+            href="https://github.com/WpgDotNetUG/WebsiteV2_Elm" target="_blank">
+            <span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i
+                class="fa fa-stack-1x fa-github"></i></span>Fork</a></div><a class="button-close"><i
+            class="fa fa-close"></i></a>
+      </div>
+      <div class="logo-menu"><img src="/assets/images/logo.png">
+        <section class="motto">
+          <header>Full Stack MB</header>
+          <div class="description">A dynamic group of serverless go getters who see sharp in the folds of lambdas,
+            microservices, and rainbows!</div>
+        </section>
+        <div class="main-menu"><a target="_blank" title="Open Event Brite page"
+            href="https://www.meetup.com/fullstackmb/events/">Events</a><a title="Watch past presentations"
+            href="#watch-us">Videos</a><a title="Contact us" href="#contact-us">Contact</a></div><a
+          class="button-open"><i class="fa fa-bars"></i></a>
+      </div>
+    </header>
+    <section class="next-event section"><a id="next-event"></a>
+      <header class="header">Next Event</header>
+      <article>
+        <div class="event-img"><img v-bind:src="nextEvent.logo" alt="event logo"></div>
+        <div class="event-info">
+          <div class="title">{{ nextEvent.title }}</div>
+          <div class="description" v-html="nextEvent.description">
+        </div>
+        <div class="presenter"></div>
+        <div class="details">
+          <div class="date">
+            <div class="icon"><i class="fa fa-calendar"></i></div>{{ nextEvent.date | formatLongDate }}
+          </div>
+          <div class="venue">
+            <div class="icon"><i class="fa fa-map-marker"></i></div>
+            <div class="name">{{ nextEvent.venue.title }}</div>
+            <div class="address">{{ nextEvent.venue.address }}</div>
+          </div>
+        </div>
+        <footer><a target="_blank" class="button -large"
+            v:bind:href="nextEvent.link">Count me in!</a></footer>
+      </article>
+    </section>
+    <section class="past-events section"><a id="past-events"></a>
+      <header>Upcoming Events</header>
+      <article>
+        <div class="past-event" v-for="item in upcomingEvents" :key="item.id">
+          <div class="image"><img v-bind:src="item.logo" alt="logo for upcoming event"></div>
+          <div class="info">
+            <div class="title">{{ item.title }}</div>
+            <div class="date">{{ item.date | formatShortDate }}</div>
+            <div class="view"><a target="_blank" class="button -outline"
+                v-bind:href="item.link">View</a></div>
+          </div>
+        </div>
+      </article>
+      <footer></footer>
+    </section>
+    <section class="featured-videos section"><a id="watch-us"></a>
+      <header><span class="title">Full Stack MB</span><a target="_blank"
+          href="https://www.youtube.com/channel/UC6OzdI6-htXE_97zamJRaaA"><i
+            class="fa fa-youtube-play"></i><span>Subscribe</span></a></header>
+      <article>
+        <div class="video" v-for="item in videos" :key="item.link">
+          <header><a target="_blank" v:bind:href="item.link"><img
+                v-bind:src="item.thumbnail"></a></header>
+          <div>{{ item.description }}</div>
+        </div>
+      </article>
+    </section>
+    <div class="list-n-twitter">
+      <article class="subscribe"><a id="subscribe"></a>
+        <header>Want to make sure you don't miss a meeting?</header>
+        <div class="signup">Then take a minute and sign up for the Full Stack MB mailing list!</div>
+        <div class="schedule">You can be on top of our event schedule, and all you need to do is check you email. Sign
+          up now and don't miss another meeting.</div>
+        <footer><a target="_blank" class="button -outline -large" href="http://eepurl.com/clTOr">Add me to the list</a>
+        </footer>
+      </article>
+      <article class="twitter-stream">
+        <header>
+          <span class="tweets">Tweets </span><span class="by">by </span><a
+            href="https://twitter.com/wpgnetug">@wpgnetug</a>
+        </header>
+        <article class="tweet-list">
+          <div class="tweet" v-for="item in tweets" :key="item.id">
+            <div class="user-image"><img
+                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
+            <div class="content">
+              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
+              <div class="content">@sumo_suzy You're in luck! We are recording it and plan on making it available on
+                YouTube soon. 👍 <a target="_blank" href="https://t.co/b9OH39FB62">https://t.co/b9OH39FB62</a></div>
+            </div>
+          </div>
+          <div class="tweet">
+            <div class="user-image"><img
+                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
+            <div class="content">
+              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
+              <div class="content">We are BACK! 😊
+
+                New season is underway! <a target="_blank" href="https://t.co/f9BKBCVWZO">https://t.co/f9BKBCVWZO</a>
+              </div>
+            </div>
+          </div>
+          <div class="tweet">
+            <div class="user-image"><img
+                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
+            <div class="content">
+              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
+              <div class="content">September 25 | Unity for Non-Developers with&nbsp;Matheu Plouffe - <a target="_blank"
+                  href="https://t.co/aQXDfIyt70">https://t.co/aQXDfIyt70</a></div>
+            </div>
+          </div>
+          <div class="tweet">
+            <div class="user-image"><img
+                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
+            <div class="content">
+              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
+              <div class="content">April 17 | Accessibility on the Web with&nbsp;Diana Carrier - <a target="_blank"
+                  href="https://t.co/JlTpLaOQyb">https://t.co/JlTpLaOQyb</a></div>
+            </div>
+          </div>
+          <div class="tweet">
+            <div class="user-image"><img
+                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
+            <div class="content">
+              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
+              <div class="content">Jan 30 | Mastering Environments with Ansible and CloudFormation with Adam Krieger -
+                <a target="_blank" href="https://t.co/uGvzCqUxcc">https://t.co/uGvzCqUxcc</a></div>
+            </div>
+          </div>
+        </article>
+      </article>
+    </div>
+    <section class="sponsors section"><a id="sponsors"></a>
+      <header>Sponsors</header>
+      <article>
+        <div class="sponsor" v-for="item in sponsors" ><a target="_blank" v-bind:href="item.url" v-bind:title="item.name">
+            <img v-bind:src="item.imgUrl" v-bind:alt="item.name"></a>
+        </div>
+      </article>
+    </section>
+    <section class="contact-us section"><a id="contact-us"></a>
+      <header>Contact Us</header>
+      <article>
+        <div class="message">Looking to reach out directly to the Full Stack MB board? Click on the board member to ask
+          your query.</div>
+        <div class="members">
+          <div class="member" v-for="item in board" v:bind:title="item.name">
+            <div class="avatar"><img v-bind:src="item.imgUrl" v-bind:alt="item.name"></div>
+            <div class="name">{{ item.name }}</div>
+            <div class="role">{{ item.role }}</div>
+            <div class="contact"><a class="button -outline -small"
+                                    v-bind:href="item.contact | mailTo">{{ item.contact }}</a></div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <footer class="main-footer">
+      <div class="menu"><a target="_blank" title="Open events page"
+          href="https://www.meetup.com/fullstackmb/events/">Events</a><a title="Watch past presentations"
+          href="#watch-us">Videos</a><a title="Contact us" href="#contact-us">Contact</a></div>
+      <div class="copyright">© Full Stack MB 2019</div>
+      <div class="version">2.1.0-e260e78</div>
+    </footer>
+    <div class="backdrop"></div>
+  </div>
+  <script>
+   //  Events
+    Vue.filter('formatLongDate', function(value) {
+      if (value) {
+        return moment(String(value)).format('dddd MMMM D, YYYY');
+      }
+    });
+    Vue.filter('mailTo', function(value) {
+      if (value) {
+        return "mailto:winnipegdotnet@gmail.com?subject=ATTN: " + value;
+      }
+    });
+    Vue.filter('formatShortDate', function(value) {
+      if (value) {
+        return moment(String(value)).format('MMMM D, YYYY');
+      }
+    });
+
+    var app = new Vue({
+      el: "#app",
+      mounted () {
+        this.getBoard();
+      },
+      methods: {
+        getBoard: () => {
+          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/board")
+            .then(response => {
+                app.board = response.data.board;
+                console.log(response.data);
+            })
+            .catch(error => console.error(error));
+        } },
+      data: function () { return {
+        board: [],
+        nextEvent: {
+          "title": "Full Stack Code and Coffee",
+          "date": "2020-04-22T22:00:00.0000000Z",
+          "id": "lmdlprybcgbdc",
+          "description": "<p>Have you got a project you want to work on but don't have time at work? Have questions to ask your peers? Some cool code to show off?</p><p>This is your opportunity! Have a beverage of your preference and share some awesome code with your peers.</p><p>Coffee sponsored by Online Business Systems.</p><p>No agenda, come and go.</p>",
+          "enddate": "2020-04-23T00:00:00.0000000Z",
+          "status": "upcoming",
+          "logo": "https://secure.meetupstatic.com/photos/event/1/9/8/b/600_479406539.jpeg",
+          "link": "https://www.meetup.com/fullstackmb/events/lmdlprybcgbdc/",
+          "venue": {
+            "name": "Across the Board Game Café",
+            "address": "",
+            "id": "26056675"
+          }
+        },
+        upcomingEvents: [
+  {
+        "title": "Full Stack Code and Coffee",
+        "date": "2020-05-06T22:00:00.0000000Z",
+        "id": "lmdlprybchbjb",
+        "description": "Have you got a project you want to work on but don't have time at work? Have questions to ask your peers? Some cool code to show off?\nThis is your opportunity! Have a beverage of your preference and share some awesome code with your peers.\nCoffee sponsored by Online Business Systems.\nNo agenda, come and go.",
+        "enddate": "2020-05-07T00:00:00.0000000Z",
+        "status": "upcoming",
+        "logo": "https://secure.meetupstatic.com/photos/event/1/9/8/b/600_479406539.jpeg",
+        "link": "https://www.meetup.com/fullstackmb/events/lmdlprybchbjb/",
+        "venue": {
+          "name": "Across the Board Game Café",
+          "address": "",
+          "id": "26056675"
+        }
+      },
+      {
+        "title": "Full Stack Code and Coffee",
+        "date": "2020-05-20T22:00:00.0000000Z",
+        "id": "lmdlprybchbbc",
+        "description": "Have you got a project you want to work on but don't have time at work? Have questions to ask your peers? Some cool code to show off?\nThis is your opportunity! Have a beverage of your preference and share some awesome code with your peers.\nCoffee sponsored by Online Business Systems.\nNo agenda, come and go.",
+        "enddate": "2020-05-21T00:00:00.0000000Z",
+        "status": "upcoming",
+        "logo": "https://secure.meetupstatic.com/photos/event/1/9/8/b/600_479406539.jpeg",
+        "link": "https://www.meetup.com/fullstackmb/events/lmdlprybchbbc/",
+        "venue": {
+          "name": "Across the Board Game Café",
+          "address": "",
+          "id": "26056675"
+        }
+      },
+      {
+        "title": "Full Stack Code and Coffee",
+        "date": "2020-06-03T22:00:00.0000000Z",
+        "id": "lmdlprybcjbfb",
+        "description": "Have you got a project you want to work on but don't have time at work? Have questions to ask your peers? Some cool code to show off?\nThis is your opportunity! Have a beverage of your preference and share some awesome code with your peers.\nCoffee sponsored by Online Business Systems.\nNo agenda, come and go.",
+        "enddate": "2020-06-04T00:00:00.0000000Z",
+        "status": "upcoming",
+        "logo": "https://secure.meetupstatic.com/photos/event/1/9/8/b/600_479406539.jpeg",
+        "link": "https://www.meetup.com/fullstackmb/events/lmdlprybcjbfb/",
+        "venue": {
+          "name": "Across the Board Game Café",
+          "address": "",
+          "id": "26056675"
+        }
+      } ],
+        videos: [
+    {
+      "title": "The not-too-scary Introduction to Parser Combinators in Scala with Craig Tataryn",
+      "date": "2018-12-21T14:49:15.0000000Z",
+      "thumbnail": "https://i.ytimg.com/vi/EinWktEd_gI/mqdefault.jpg",
+      "description": "In this session Craig goes over a history of parsing, including an ANTLR demo. Then the basic concepts of Parser Combinators and how they are employed to ...",
+      "link": "https://www.youtube.com/watch?v=EinWktEd_gI"
+    }],
+        tweets: [],
+        sponsors: [] 
+      }}})
+  </script>
+
+</body>
+
+</html>
