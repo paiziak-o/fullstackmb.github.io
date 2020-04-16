@@ -15,15 +15,15 @@
 </head>
 
 <body>
-  <div id="app" class="container">
+  <div id="app" class="container" :class="{ 'drawer-open': isMenuVisible }">
     <header>
       <div class="nav-social">
         <ul class="nav-menu">
-          <li><a href="#next-event">Next Event</a></li>
-          <li><a href="#past-events">Past Events</a></li>
-          <li><a href="#subscribe">Subscribe</a></li>
-          <li><a href="#sponsors">Sponsors</a></li>
-          <li><a href="#contact-us">Contact Us</a></li>
+          <li><a @click="closeMenu()" href="#next-event">Next Event</a></li>
+          <li><a @click="closeMenu()" href="#past-events">Past Events</a></li>
+          <li><a @click="closeMenu()" href="#subscribe">Subscribe</a></li>
+          <li><a @click="closeMenu()" href="#sponsors">Sponsors</a></li>
+          <li><a @click="closeMenu()" href="#contact-us">Contact Us</a></li>
         </ul>
         <div class="slack-form">
           <a class="sm-link" href="http://slack.winnipegdotnet.org" target="_blank"><i class="fa fa-slack"></i>slack</a>
@@ -46,8 +46,8 @@
             title="Fork us on GitHub and collaborate" class="sm-link"
             href="https://github.com/WpgDotNetUG/WebsiteV2_Elm" target="_blank">
             <span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i
-                class="fa fa-stack-1x fa-github"></i></span>Fork</a></div><a class="button-close"><i
-            class="fa fa-close"></i></a>
+                class="fa fa-stack-1x fa-github"></i></span>Fork</a></div>
+        <button @click="closeMenu()" class="button-close"><i class="fa fa-close"></i></button>
       </div>
       <div class="logo-menu"><img src="/assets/images/logo.png">
         <section class="motto">
@@ -58,7 +58,7 @@
         <div class="main-menu"><a target="_blank" title="Open Event Brite page"
             href="https://www.meetup.com/fullstackmb/events/">Events</a><a title="Watch past presentations"
             href="#watch-us">Videos</a><a title="Contact us" href="#contact-us">Contact</a></div>
-        <a class="button-open"><i class="fa fa-bars"></i></a>
+        <button @click="openMenu()" class="button-open"><i class="fa fa-bars"></i></button>
       </div>
     </header>
     <section class="next-event section"><a id="next-event"></a>
@@ -201,6 +201,12 @@
         this.getTweets();
       },
       methods: {
+        openMenu: () => {
+          app.isMenuVisible = true; 
+        },
+        closeMenu: () => {
+          app.isMenuVisible = false;
+        },
         getTweets: () => {
          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/tweets")
             .then(response => {
@@ -258,6 +264,7 @@
         }
       }, 
       data: function () { return {
+        isMenuVisible: false,
         board: [],
         nextEvent: null,
         upcomingEvents: [ ],
