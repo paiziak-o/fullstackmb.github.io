@@ -57,17 +57,20 @@
         </section>
         <div class="main-menu"><a target="_blank" title="Open Event Brite page"
             href="https://www.meetup.com/fullstackmb/events/">Events</a><a title="Watch past presentations"
-            href="#watch-us">Videos</a><a title="Contact us" href="#contact-us">Contact</a></div><a
-          class="button-open"><i class="fa fa-bars"></i></a>
+            href="#watch-us">Videos</a><a title="Contact us" href="#contact-us">Contact</a></div>
+        <a class="button-open"><i class="fa fa-bars"></i></a>
       </div>
     </header>
     <section class="next-event section"><a id="next-event"></a>
       <header class="header">Next Event</header>
-      <article>
+      <article v-if="!nextEvent">
+        <div ><i class="fa fa-spin fa-spinner fa-5x"></i></div>
+      </article>
+      <article v-if="nextEvent">
         <div class="event-img"><img v-bind:src="nextEvent.logo" alt="event logo"></div>
         <div class="event-info">
           <div class="title">{{ nextEvent.title }}</div>
-          <div class="description" v-html="nextEvent.descriptionHtml">
+          <div class="description" v-html="nextEventDescriptionHtml">
         </div>
         <div class="presenter"></div>
         <div class="details">
@@ -128,49 +131,10 @@
         <article class="tweet-list">
           <div class="tweet" v-for="item in tweets" :key="item.id">
             <div class="user-image"><img
-                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
+                v-bind:src="item.user.profile_image_url" v-bind:alt="item.user.screen_name"></div>
             <div class="content">
-              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
-              <div class="content">@sumo_suzy You're in luck! We are recording it and plan on making it available on
-                YouTube soon. 👍 <a target="_blank" href="https://t.co/b9OH39FB62">https://t.co/b9OH39FB62</a></div>
-            </div>
-          </div>
-          <div class="tweet">
-            <div class="user-image"><img
-                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
-            <div class="content">
-              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
-              <div class="content">We are BACK! 😊
-
-                New season is underway! <a target="_blank" href="https://t.co/f9BKBCVWZO">https://t.co/f9BKBCVWZO</a>
-              </div>
-            </div>
-          </div>
-          <div class="tweet">
-            <div class="user-image"><img
-                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
-            <div class="content">
-              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
-              <div class="content">September 25 | Unity for Non-Developers with&nbsp;Matheu Plouffe - <a target="_blank"
-                  href="https://t.co/aQXDfIyt70">https://t.co/aQXDfIyt70</a></div>
-            </div>
-          </div>
-          <div class="tweet">
-            <div class="user-image"><img
-                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
-            <div class="content">
-              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
-              <div class="content">April 17 | Accessibility on the Web with&nbsp;Diana Carrier - <a target="_blank"
-                  href="https://t.co/JlTpLaOQyb">https://t.co/JlTpLaOQyb</a></div>
-            </div>
-          </div>
-          <div class="tweet">
-            <div class="user-image"><img
-                src="https://pbs.twimg.com/profile_images/748573822568140801/zDbU2J0G_normal.jpg"></div>
-            <div class="content">
-              <div class="user"><span class="handle">wpgnetug</span><span class="name">Winnipeg .NET UG</span></div>
-              <div class="content">Jan 30 | Mastering Environments with Ansible and CloudFormation with Adam Krieger -
-                <a target="_blank" href="https://t.co/uGvzCqUxcc">https://t.co/uGvzCqUxcc</a></div>
+              <div class="user"><span class="handle">{{ item.user.screen_name }}</span><span class="name">{{ item.user.name }}</span></div>
+              <div class="content" v-html="item.text"></div>
             </div>
           </div>
         </article>
@@ -234,8 +198,17 @@
         this.getSponsors();
         this.getEvents();
         this.getVideos();
+        this.getTweets();
       },
       methods: {
+        getTweets: () => {
+         axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/tweets")
+            .then(response => {
+              app.tweets = response.data.tweets.slice(0,5);
+              console.log(response.data.tweets);
+            })
+            .catch(error => console.error(error));
+        },
         getVideos: () => {
           axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/videos")
             .then(response => {
@@ -258,7 +231,6 @@
               let events = response.data.events;
               if (events.length > 0) { 
                 [app.nextEvent, ...app.upcomingEvents] = events; 
-                app.nextEvent.descriptionHtml = "<p>" + app.nextEvent.description.split('\n').join("</p><p>") + "</p>";
               }
               else {
                 app.nextEvent = null;
@@ -277,18 +249,19 @@
             .catch(error => console.error(error));
         }
       },
+      computed: {
+        nextEventDescriptionHtml: function() {
+          if (this.nextEvent) {
+            return "<p>" + this.nextEvent.description.split('\n').join("</p><p>") + "</p>";
+          }
+          return "";
+        }
+      }, 
       data: function () { return {
         board: [],
         nextEvent: null,
         upcomingEvents: [ ],
-        videos: [
-    {
-      "title": "The not-too-scary Introduction to Parser Combinators in Scala with Craig Tataryn",
-      "date": "2018-12-21T14:49:15.0000000Z",
-      "thumbnail": "https://i.ytimg.com/vi/EinWktEd_gI/mqdefault.jpg",
-      "description": "In this session Craig goes over a history of parsing, including an ANTLR demo. Then the basic concepts of Parser Combinators and how they are employed to ...",
-      "link": "https://www.youtube.com/watch?v=EinWktEd_gI"
-    }],
+        videos: [],
         tweets: [],
         sponsors: [] 
       }}})
