@@ -33,7 +33,7 @@ img.wide {
 
 html, body {
   margin: 0;
-  background: white;
+  background: #fdfdfd;
   font-family: 'Montserrat', sans-serif; }
 
 .container {
@@ -156,7 +156,8 @@ body {
   font-size: 18px; }
   .motto .description {
     font-size: 13px;
-    color: #c7cbcc; }
+    color: #666;
+     }
 
 .section > header {
   height: 45px;
@@ -330,7 +331,7 @@ body {
   text-decoration: none;
   font-size: 12px;
   letter-spacing: 2px;
-  color: #c7cbcc; }
+  color: #444444; }
   .sm-link > span {
     margin-right: 4px;
     font-size: 15px;
@@ -358,23 +359,28 @@ body {
   opacity: .5;
   z-index: 99; }
 
+.slack-form {
+  margin-top: 12px;
+  margin-left: 5%; 
+  width: 320px;
+}
+.grid-two-50 {
+  display: flex;
+  flex: 1 1 0; 
+  justify-content: space-between;
+}
+.slack-form img {
+  width: 75px;
+  height: 75px;
+}
 .slack-form .fa-slack {
   margin-right: 4px;
   color: #5D3A58;
-  font-size: 2.5em;
+  font-size: 5.5em;
   vertical-align: middle; }
 
-.slack-form .form-group {
-  display: none;
-  position: relative;
-  height: 30px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 12px; }
   .slack-form .form-group > label,
   .slack-form .form-group > input {
-    position: absolute;
     top: 0;
     transition: transform .4s ease; }
   .slack-form .form-group > label {
@@ -382,20 +388,19 @@ body {
     left: 0;
     padding-left: 34px;
     line-height: 30px;
-    color: #c7cbcc;
     text-transform: uppercase;
     letter-spacing: 2px;
     z-index: 1;
     cursor: pointer; }
   .slack-form .form-group > input {
     height: 100%;
-    left: 30px;
     padding: 2px 4px;
     z-index: 0;
-    border: none;
     font-size: 12px;
-    transform: translateY(-100%);
-    outline: none; }
+    padding: 6px 8px;
+    border: 1px solid #c7cbcc;
+    border-radius: 3px;
+    outline: 0; }
     .slack-form .form-group > input:focus {
       border-bottom: 1px solid #9ca8b4;
       transform: translateY(0); }
@@ -406,7 +411,40 @@ body {
   .slack-form .form-group > input:focus ~ label {
     transform: translateY(100%); }
   .slack-form .form-group .input-group-addon {
-    display: none; }
+    display: block; }
+
+    /***************************/
+    .slack-form {
+          display: block;
+          align-items: center;
+          margin-bottom: 0;
+          order: 0; }
+          .slack-form > .sm-link {
+            display: none; }
+          .slack-form .form-group {
+            height: auto;
+            display: block;
+            align-items: center;
+            font-size: 10px; }
+            .slack-form .form-group > label,
+            .slack-form .form-group > input {
+              position: static;
+              transform: translateY(0); 
+              width: 100%;
+            }
+            .slack-form .form-group > label {
+              padding-left: 0;
+              margin-right: 4px;
+              letter-spacing: normal; }
+            .slack-form .form-group > input {
+              padding: 6px 8px;
+              border: 1px solid #c7cbcc;
+              border-radius: 3px;
+            }
+            .slack-form .form-group > input::-webkit-input-placeholder, .slack-form .form-group > input:focus::-webkit-input-placeholder {
+                        color: #c7cbcc; }
+                      .slack-form .form-group > input:focus ~ label {
+                        transform: translateY(0); }
 
 @media (min-width: 768px) {
   .nav-menu,
@@ -417,41 +455,6 @@ body {
   .motto,
   .main-menu {
     display: block; }
-  .slack-form {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    border-right: 1px solid #f4f4f4;
-    padding-right: 30px;
-    margin-bottom: 0;
-    order: 0; }
-    .slack-form > .sm-link {
-      display: none; }
-    .slack-form .form-group {
-      height: auto;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      font-size: 10px; }
-      .slack-form .form-group > label,
-      .slack-form .form-group > input {
-        position: static;
-        transform: translateY(0); }
-      .slack-form .form-group > label {
-        padding-left: 0;
-        margin-right: 4px;
-        /*order: 1;*/
-        letter-spacing: normal; }
-      .slack-form .form-group > input {
-        padding: 6px 8px;
-        border: 1px solid #c7cbcc;
-        border-radius: 3px;
-        /*order: 2;*/
-      }
-        .slack-form .form-group > input::-webkit-input-placeholder, .slack-form .form-group > input:focus::-webkit-input-placeholder {
-          color: #c7cbcc; }
-        .slack-form .form-group > input:focus ~ label {
-          transform: translateY(0); }
   .nav-social {
     flex-flow: row nowrap;
     position: static;
