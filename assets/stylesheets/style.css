@@ -42,8 +42,6 @@ html, body {
   .container:before {
     content: "";
     display: table; }
-  .container > header + section {
-    margin-top: 70px; }
 
 img {
   max-width: 100%; }
@@ -99,8 +97,6 @@ a[id]::before {
 @media (min-width: 768px) {
   .container > header {
     padding: 0 15px; }
-    .container > header + section {
-      margin-top: 0; }
   .past-events > article,
   .featured-videos > article,
   .sponsors > article,
