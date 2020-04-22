@@ -219,7 +219,6 @@
          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/tweets")
             .then(response => {
               app.tweets = response.data.tweets.slice(0,5);
-              console.log(response.data.tweets);
             })
             .catch(error => console.error(error));
         },
@@ -227,7 +226,6 @@
           axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/videos")
             .then(response => {
               app.videos = response.data.videos.slice(0,3);
-              console.log(response.data.videos);
             })
             .catch(error => console.error(error));
         },
@@ -235,7 +233,6 @@
           axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/board")
             .then(response => {
                 app.board = response.data.board;
-                console.log(response.data);
             })
             .catch(error => console.error(error));
         },
@@ -250,7 +247,6 @@
                 app.nextEvent = null;
                 app.upcomingEvents = [];
               }
-              console.log(response.data);
             })
             .catch(error => console.error(error));
         },
@@ -258,7 +254,6 @@
           axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/sponsors")
             .then(response => {
               app.sponsors = response.data.sponsors;
-              console.log(response.data);
             })
             .catch(error => console.error(error));
         }
@@ -273,7 +268,6 @@
       }, 
       data: function () { return {
         isMenuVisible: false,
-        email: null,
         board: [],
         nextEvent: null,
         upcomingEvents: [ ],
