@@ -230,14 +230,14 @@
             .catch(error => console.error(error));
         },
         getBoard: () => {
-          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/board")
+          axios.get("https://fullstackmbapi.azurewebsites.net/api/board")
             .then(response => {
                 app.board = response.data.board;
             })
             .catch(error => console.error(error));
         },
         getEvents: () => {
-          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/events")
+          axios.get("https://fullstackmbapi.azurewebsites.net/api/events")
             .then(response => {
               let events = response.data.events;
               if (events.length > 0) { 
@@ -251,7 +251,7 @@
             .catch(error => console.error(error));
         },
         getSponsors: () => {
-          axios.get("https://winnipegdotnetugapi.azurewebsites.net/api/sponsors")
+          axios.get("https://fullstackmbapi.azurewebsites.net/api/sponsors")
             .then(response => {
               app.sponsors = response.data.sponsors;
             })
