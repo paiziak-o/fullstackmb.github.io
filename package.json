@@ -1,13 +1,32 @@
 {
   "name": "fullstackmb-website",
-  "version": "1.0.0",
+  "version": "3.0.0-alpha",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf _site",
+    "build": "eleventy",
+    "dev": "eleventy --serve"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Full Stack Manitoba",
+    "email": "fullstackmb@gmail.com",
+    "url": "https://fullstackmb.ca"
+  },
+  "contributors": [
+    {
+      "name": "David Wesst",
+      "email": "dw@davidwesst.com",
+      "url": "https://www.davidwesst.com"
+    }
+  ],
+  "license": "MIT",
   "description": "",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
 }
