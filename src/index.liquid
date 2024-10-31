@@ -1,3 +1,7 @@
+---
+eleventyImport:
+    collections: ["events"]
+---
 <html>
     <head>
         <title>Full Stack MB</title>
@@ -44,7 +48,8 @@
                         </a>
                 </ul>
             </nav>
-            <div class="logo-menu"><img src="/images/logo.png">
+            <div class="logo-menu">
+                <img src="/images/logo.png">
                 <section class="motto">
                 <header>Full Stack MB</header>
                 <div class="description">A dynamic group of serverless go getters who see sharp in the folds of lambdas,
@@ -56,7 +61,7 @@
             <section class="next-event section"><a id="next-event"></a>
                 <header class="header">Next Event</header>
                 <article>
-                    Next event information gets listed here.
+                    Next event: {{ events[0].title }}
                 </article>
                 <!--
                 <article v-if="!nextEvent">
@@ -86,8 +91,12 @@
             </section>
             <section class="past-events section"><a id="upcoming-events"></a>
                 <header>Upcoming Events</header>
-                <article>
-                    Upcomging events get listed here.
+                <ul>
+                    {%- for event in events -%}
+                        <li>{{ event.title }}</li>
+                    {%- else -%}
+                        <li>There are no upcoming events.<li>
+                    {%- endfor -%}
                     <!--
                     <div class="past-event" v-for="item in upcomingEvents" :key="item.id">
                     <div class="image"><img v-bind:src="item.logo" alt="logo for upcoming event"></div>
@@ -99,7 +108,7 @@
                     </div>
                     </div>
                     -->
-                </article>
+                </ul>
                 <footer></footer>
             </section>
             <section class="sponsors section"><a id="sponsors"></a>
