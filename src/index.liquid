@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title>Full Stack MB</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css">
+        <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="/styles/pnotify.custom.min.css" type="text/css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/scripts/moment.min.js"></script>
+    </head>
+    <body class="container">
+        <header>
+            <nav class="nav-social">
+                <ul class="social-icons">
+                    <a title="Join us on Slack." class="sm-link" href="slack.html">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-circle fa-stack-2x color-slack"></i>
+                            <i class="fa fa-stack-1x fa-slack"></i>
+                        </span>
+                        Join
+                        </a>
+                        <a title="Follow us on Twitter." class="sm-link" href="https://twitter.com/wpgnetug" target="_blank">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-circle fa-stack-2x color-twitter"></i>
+                            <i class="fa fa-stack-1x fa-twitter"></i>
+                        </span>Follow
+                        </a>
+                        <a title="Like us on Facebook" class="sm-link" href="https://www.facebook.com/winnipegdotnet" target="_blank">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-circle fa-stack-2x color-facebook"></i>
+                        <i class="fa fa-stack-1x fa-facebook"></i></span>Like
+                        </a>
+                        <a title="Subscribe to our YouTube channel to get notifications" class="sm-link" href="https://www.youtube.com/channel/UC6OzdI6-htXE_97zamJRaaA" target="_blank">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-circle fa-stack-2x color-youtube"></i>
+                            <i class="fa fa-stack-1x fa-youtube-play"></i></span>Subscribe</a>
+                        <a title="Fork us on GitHub and collaborate" class="sm-link" href="https://github.com/WpgDotNetUG/WebsiteV2_Vue" target="_blank">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-circle fa-stack-2x color-github"></i>
+                            <i class="fa fa-stack-1x fa-github"></i></span>Fork
+                        </a>
+                </ul>
+            </nav>
+            <div class="logo-menu"><img src="/images/logo.png">
+                <section class="motto">
+                <header>Full Stack MB</header>
+                <div class="description">A dynamic group of serverless go getters who see sharp in the folds of lambdas,
+                    microservices, and rainbows!</div>
+                </section>
+            </div>
+        </header>
+        <main>
+            <section class="next-event section"><a id="next-event"></a>
+                <header class="header">Next Event</header>
+                <article>
+                    Next event information gets listed here.
+                </article>
+                <!--
+                <article v-if="!nextEvent">
+                    <div ><i class="fa fa-spin fa-spinner fa-5x"></i></div>
+                </article>
+                <article v-if="nextEvent">
+                    <div class="event-img"><img v-bind:src="nextEvent.logo" alt="event logo"></div>
+                    <div class="event-info">
+                    <div class="title">{{ nextEvent.title }}</div>
+                    <div class="description" v-html="nextEventDescriptionHtml"> </div>
+                    </div>
+                    <div class="presenter"></div>
+                    <div class="details">
+                    <div class="date">
+                        <div class="icon"><i class="fa fa-calendar"></i></div>{{ nextEvent.date }}
+                    </div>
+                    <div class="venue">
+                        <div class="icon"><i class="fa fa-map-marker"></i></div>
+                        <div class="name">{{ nextEvent.venue.name}}</div>
+                        <div class="address">{{ nextEvent.venue.address }}</div>
+                    </div>
+                    </div>
+                    <footer><a target="_blank" class="button -large"
+                        :href="nextEvent.link">Count me in!</a></footer>
+                </article>
+                -->
+            </section>
+            <section class="past-events section"><a id="upcoming-events"></a>
+                <header>Upcoming Events</header>
+                <article>
+                    Upcomging events get listed here.
+                    <!--
+                    <div class="past-event" v-for="item in upcomingEvents" :key="item.id">
+                    <div class="image"><img v-bind:src="item.logo" alt="logo for upcoming event"></div>
+                    <div class="info">
+                        <div class="title">{{ item.title }}</div>
+                        <div class="date">{{ item.date }}</div>
+                        <div class="view"><a target="_blank" class="button -outline"
+                            v-bind:href="item.link">View</a></div>
+                    </div>
+                    </div>
+                    -->
+                </article>
+                <footer></footer>
+            </section>
+            <section class="sponsors section"><a id="sponsors"></a>
+                <header>Sponsors</header>
+                <article>
+                    <img src="https://fsmb.s3.ca-central-1.amazonaws.com/sponsors/looking-for-sponsors.png" alt="We are looking for sponsors."/>
+                </article>
+            </section>
+            <section class="contact-us section"><a id="contact-us"></a>
+                <header>Contact Us</header>
+                <article>
+                    <div class="message">Looking to reach out directly to the Full Stack MB board? Click on the board member to ask
+                    your query.</div>
+                    <div class="members">
+                    <div class="member" v-for="item in board" v:bind:title="item.name">
+                        <div class="avatar"><img v-bind:src="item.imgUrl" v-bind:alt="item.name"></div>
+                        <div class="name">{{ item.name }}</div>
+                        <div class="role">{{ item.role }}</div>
+                        <div class="contact"><a class="button -outline -small"
+                                                v-bind:href="item.contact | mailTo">{{ item.contact }}</a></div>
+                    </div>
+                    </div>
+                </article>
+            </main>
+
+        </body>
+    </html>

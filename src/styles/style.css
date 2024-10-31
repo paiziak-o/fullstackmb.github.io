@@ -1,6 +1,19 @@
 html, body {
     background: #fdfdfd;
     display: flex;
+    flex-direction: column;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
+}
+
+main > section > header {
+    align-items: center;
+    background-color: rgb(28, 60, 97);
+    color: white;
+    display: flex;
+    font-size: 15px;
+    height: 45px;
+    justify-content: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
