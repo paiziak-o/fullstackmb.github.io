@@ -1,5 +1,6 @@
 # ignore npm modules
 node_modules/
 
-# ignore build output
+# ignore eleventy output and assets
 _site/
+.cache

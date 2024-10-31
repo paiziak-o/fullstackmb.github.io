@@ -1,4 +1,6 @@
 html, body {
-    margin: 0;
+    background: #fdfdfd;
     display: flex;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
 }
