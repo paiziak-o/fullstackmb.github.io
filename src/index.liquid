@@ -53,41 +53,41 @@ eleventyImport:
                 <section class="motto">
                 <header>Full Stack MB</header>
                 <div class="description">A dynamic group of serverless go getters who see sharp in the folds of lambdas,
-                    microservices, and rainbows!</div>
+                    microservices, and rainbows! Sandwich!</div>
                 </section>
             </div>
         </header>
         <main>
-            <section class="next-event section"><a id="next-event"></a>
+            <section class="next-event"><a id="next-event"></a>
                 <header class="header">Next Event</header>
-                <article>
                     {% if events.length > 0 %}
-                    <article class="event-img">
-                        <img src="{{ events[0].logo }}" >
-                    </article>
-                    <article class="event-info">
-                        <div class="title">{{ events[0].title }}</div>
-                    </article>
-                    <article class="description">
-                        <span>{{ events[0].description }}</span>
-                    </article>
-                    <section class="details">
-                        <div class="icon"><i class="fa fa-calendar"></i></div>
-                        <span class="date">{{ events[0].date | date_to_string }}</span>
-                        <div class="venue">
-                            <div class="icon"><i class="fa fa-map-marker"></i></div>
-                            <div class="name">{{ events[0].venue.name}}</div>
-                            <div class="address">{{ events[0].venue.address }}</div>
-                        </div>
-                    </section>
-                    <footer><a target="_blank" class="button -large"
-                        href="{{ event[0].link }}">Count me in!</a></footer>
-                    {% else %}
-                        <article>
-                            There are no events currently planned.
+                    <article class="content">
+                        <article class="event-img">
+                            <img src="{{ events[0].logo }}" >
                         </article>
+                        <article class="event-info">
+                            <div class="title">{{ events[0].title }}</div>
+                            <article class="description">
+                                <span>{{ events[0].description }}</span>
+                            </article>
+                            <article class="details">
+                                <div class="icon"><i class="fa fa-calendar"></i></div>
+                                <span class="date">{{ events[0].date | date_to_string }}</span>
+                                <div class="venue">
+                                    <div class="icon"><i class="fa fa-map-marker"></i></div>
+                                    <div class="name">{{ events[0].venue.name}}</div>
+                                    <div class="address">{{ events[0].venue.address }}</div>
+                                </div>
+                            </article>
+                            <article class="call-to-action"><a target="_blank" class="button -large"
+                                href="{{ event[0].link }}">Count me in!</a></article>
+                        </article>
+                    </article>
+                    {% else %}
+                        <article>There are no events currently planned.</article>
                     {% endif %}
                 </article>
+                </>
             </section>
             {% if events.length > 0 %}
             <section class="past-events section"><a id="upcoming-events"></a>

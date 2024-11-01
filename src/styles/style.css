@@ -17,3 +17,60 @@ main > section > header {
     letter-spacing: 2px;
     text-transform: uppercase;
 }
+
+.next-event .content {
+    display: flex;
+    justify-content: space-evenly;   
+}
+
+.next-event .event-info {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+}
+
+.next-event footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-event > article {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+}
+
+
+.next-event .title {
+    font-size: 30px;
+}
+
+.next-event .description {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 1em;
+}
+
+.next-event .call-to-action {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.button.-large {
+    min-width: 140px;
+    font-size: 13px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    padding: 0 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    background-color: #50e3c2;
+    color: white;
+}
