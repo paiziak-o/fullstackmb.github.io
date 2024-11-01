@@ -61,56 +61,55 @@ eleventyImport:
             <section class="next-event section"><a id="next-event"></a>
                 <header class="header">Next Event</header>
                 <article>
-                    Next event: {{ events[0].title }}
-                </article>
-                <!--
-                <article v-if="!nextEvent">
-                    <div ><i class="fa fa-spin fa-spinner fa-5x"></i></div>
-                </article>
-                <article v-if="nextEvent">
-                    <div class="event-img"><img v-bind:src="nextEvent.logo" alt="event logo"></div>
-                    <div class="event-info">
-                    <div class="title">{{ nextEvent.title }}</div>
-                    <div class="description" v-html="nextEventDescriptionHtml"> </div>
-                    </div>
-                    <div class="presenter"></div>
-                    <div class="details">
-                    <div class="date">
-                        <div class="icon"><i class="fa fa-calendar"></i></div>{{ nextEvent.date }}
-                    </div>
-                    <div class="venue">
-                        <div class="icon"><i class="fa fa-map-marker"></i></div>
-                        <div class="name">{{ nextEvent.venue.name}}</div>
-                        <div class="address">{{ nextEvent.venue.address }}</div>
-                    </div>
-                    </div>
+                    {% if events.length > 0 %}
+                    <article class="event-img">
+                        <img src="{{ events[0].logo }}" >
+                    </article>
+                    <article class="event-info">
+                        <div class="title">{{ events[0].title }}</div>
+                    </article>
+                    <article class="description">
+                        <span>{{ events[0].description }}</span>
+                    </article>
+                    <section class="details">
+                        <div class="icon"><i class="fa fa-calendar"></i></div>
+                        <span class="date">{{ events[0].date | date_to_string }}</span>
+                        <div class="venue">
+                            <div class="icon"><i class="fa fa-map-marker"></i></div>
+                            <div class="name">{{ events[0].venue.name}}</div>
+                            <div class="address">{{ events[0].venue.address }}</div>
+                        </div>
+                    </section>
                     <footer><a target="_blank" class="button -large"
-                        :href="nextEvent.link">Count me in!</a></footer>
+                        href="{{ event[0].link }}">Count me in!</a></footer>
+                    {% else %}
+                        <article>
+                            There are no events currently planned.
+                        </article>
+                    {% endif %}
                 </article>
-                -->
             </section>
+            {% if events.length > 0 %}
             <section class="past-events section"><a id="upcoming-events"></a>
                 <header>Upcoming Events</header>
                 <ul>
-                    {%- for event in events -%}
-                        <li>{{ event.title }}</li>
+                    {%- for item in events offset: 1 -%}
+                        <li class="past-event">
+                            <div class="image"><img src="{{ item.logo }}" alt="logo for upcoming event"></div>
+                            <div class="info">
+                                <div class="title">{{ item.title }}</div>
+                                <div class="date">{{ item.date | date_to_string }}</div>
+                                <div class="view"><a target="_blank" class="button -outline"
+                                   href="{{ item.link }}">View</a></div>
+                            </div>
+                        </li>
                     {%- else -%}
                         <li>There are no upcoming events.<li>
                     {%- endfor -%}
-                    <!--
-                    <div class="past-event" v-for="item in upcomingEvents" :key="item.id">
-                    <div class="image"><img v-bind:src="item.logo" alt="logo for upcoming event"></div>
-                    <div class="info">
-                        <div class="title">{{ item.title }}</div>
-                        <div class="date">{{ item.date }}</div>
-                        <div class="view"><a target="_blank" class="button -outline"
-                            v-bind:href="item.link">View</a></div>
-                    </div>
-                    </div>
-                    -->
                 </ul>
                 <footer></footer>
             </section>
+            {% endif %}
             <section class="sponsors section"><a id="sponsors"></a>
                 <header>Sponsors</header>
                 <article>
