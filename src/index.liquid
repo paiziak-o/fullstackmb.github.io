@@ -90,11 +90,11 @@ eleventyImport:
                 </>
             </section>
             {% if events.length > 0 %}
-            <section class="past-events section"><a id="upcoming-events"></a>
+            <section class="upcoming-events"><a id="upcoming-events"></a>
                 <header>Upcoming Events</header>
-                <ul>
+                <ul class="items">
                     {%- for item in events offset: 1 -%}
-                        <li class="past-event">
+                        <li class="upcoming-event">
                             <div class="image"><img src="{{ item.logo }}" alt="logo for upcoming event"></div>
                             <div class="info">
                                 <div class="title">{{ item.title }}</div>
