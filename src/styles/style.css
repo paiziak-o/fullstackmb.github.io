@@ -6,6 +6,26 @@ html, body {
     margin: 0;
 }
 
+header.site-header {
+
+}
+
+.nav-social {
+    flex-flow: row nowrap;
+    position: static;
+    width: 100%;
+    padding: 10px 0;
+    border-right: none;
+    border-bottom: 1px solid #f4f4f4;
+    transform: translateX(0);
+    transition: none;
+}
+
+.nav-social .social-icons {
+    display: flex;
+    justify-content: space-between;
+}
+
 main > section > header {
     align-items: center;
     background-color: rgb(28, 60, 97);
@@ -61,6 +81,25 @@ img {
     justify-content: center;
     align-items: flex-end;
     flex-grow: 2;
+}
+
+/*
+    Controls
+*/
+.sm-link {
+    display: flex;
+    flex: 1;
+    flex-flow: row;
+    align-items: center;
+    margin-bottom: 0;
+    font-size: 10px;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.sm-link > span {
+    color: white;
 }
 
 .button {
@@ -134,4 +173,20 @@ img {
     color: white;
     flex-direction: column;
     justify-content: center;
+}
+
+.color-slack {
+    color: #5D3A58;
+}
+
+.color-linkedin {
+    color: #0073b1
+}
+
+.color-github {
+    color: black;
+}
+
+.color-youtube {
+    color: #ff0000
 }
