@@ -396,7 +396,6 @@ body {
     z-index: 1;
     cursor: pointer; }
   .slack-form .form-group > input {
-    height: 100%;
     padding: 2px 4px;
     z-index: 0;
     font-size: 12px;
