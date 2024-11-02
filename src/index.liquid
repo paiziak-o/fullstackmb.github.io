@@ -137,8 +137,7 @@ eleventyImport:
             <section class="contact-us section"><a id="contact-us"></a>
                 <header>Contact Us</header>
                 <article class="site-content">
-                    <div class="message">Looking to reach out directly to the Full Stack MB board? Click on the board member to ask
-                    your query.</div>
+                    <div class="message">Looking to reach out directly to the Full Stack MB leadership? You can find us on <a href="https://www.linkedin.com/company/fullstackmb/" target="_blank">LinkedIn</a>, get an invite to our <a href="/slack">Slack</a>, or message us through <a href="https://www.meetup.com/fullstackmb/" target="_blank">Meetup</a> and someone will get back to you as soon as possible.</div>
                     <div class="members">
                     <div class="member" v-for="item in board" v:bind:title="item.name">
                         <div class="avatar"><img v-bind:src="item.imgUrl" v-bind:alt="item.name"></div>
@@ -151,13 +150,8 @@ eleventyImport:
                 </article>
             </main>
             <footer class="main-footer">
-                <div class="menu">
-                    <a target="_blank" title="Open events page" href="https://www.meetup.com/fullstackmb/events/">Events</a>
-                    <a title="Watch past presentations" href="#watch-us">Videos</a>
-                    <a title="Contact us" href="#contact-us">Contact</a>
-                </div>
                 <div class="copyright">© Full Stack MB 2024</div>
-                <!--<div class="version">2.1.0-e260e78</div>-->
+                <div class="version">3.0.0-alpha</div>
             </footer>
 
         </body>
