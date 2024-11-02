@@ -87,12 +87,14 @@ eleventyImport:
                                 <span>{{ events[0].description }}</span>
                             </article>
                             <article class="details">
-                                <div class="icon"><i class="fa fa-calendar"></i></div>
-                                <span class="date">{{ events[0].date | date_to_string }}</span>
+                                <div class="date">
+                                    <div class="icon"><i class="fa fa-calendar"></i></div>
+                                    <span class="date">{{ events[0].date | date_to_string }}</span>
+                                </div>
                                 <div class="venue">
                                     <div class="icon"><i class="fa fa-map-marker"></i></div>
                                     <div class="name">{{ events[0].venue.name}}</div>
-                                    <div class="address">{{ events[0].venue.address }}</div>
+                                    <div class="address">({{ events[0].venue.address }})</div>
                                 </div>
                             </article>
                             <article class="call-to-action"><a target="_blank" class="button -large"

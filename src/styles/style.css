@@ -78,6 +78,23 @@ img {
     margin-bottom: 10px;
 }
 
+.next-event .title, .next-event .description, .next-event .details {
+    margin-left: 10px;
+}
+
+.next-event .details * {
+    display: flex;
+    flex-direction: row;
+}
+
+.next-event .icon {
+    width: 20px;
+}
+
+.next-event .address {
+    margin: 0 4px;
+}
+
 .next-event .event-info {
     width: 50%;
     display: flex;
