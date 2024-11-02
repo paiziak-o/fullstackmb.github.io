@@ -16,10 +16,10 @@ eleventyImport:
         <script src="/scripts/moment.min.js"></script>
     </head>
     <body class="container">
-        <header class="site-header">
+        <header class="site-header site-content">
             <nav class="nav-social">
                 <ul class="social-icons">
-                    <a title="Join us on Slack." class="sm-link" href="slack.html">
+                    <a title="Join us on Slack." class="sm-link" href="/slack">
                         <span class="fa-stack fa-2x">
                             <i class="fa fa-circle fa-stack-2x color-slack" aria-hideen="true"></i>
                             <i class="fa fa-stack-1x fa-slack"></i>
@@ -62,9 +62,8 @@ eleventyImport:
             <div class="logo-menu">
                 <img src="/images/logo.png">
                 <section class="motto">
-                <header>Full Stack MB</header>
-                <div class="description">A dynamic group of serverless go getters who see sharp in the folds of lambdas,
-                    microservices, and rainbows! Sandwich!</div>
+                    <header>Full Stack MB</header>
+                    <div class="description">A dynamic group of serverless go getters who see sharp in the folds of lambdas, microservices, and rainbows! Sandwich!</div>
                 </section>
             </div>
         </header>
@@ -72,7 +71,7 @@ eleventyImport:
             <section class="next-event"><a id="next-event"></a>
                 <header class="header">Next Event</header>
                     {% if events.length > 0 %}
-                    <article class="content">
+                    <article class="content site-content">
                         <article class="event-img">
                             <img src="{{ events[0].logo }}" >
                         </article>
@@ -103,7 +102,7 @@ eleventyImport:
             {% if events.length > 0 %}
             <section class="upcoming-events"><a id="upcoming-events"></a>
                 <header>Upcoming Events</header>
-                <ul class="items">
+                <ul class="items site-content">
                     {%- for item in events offset: 1 -%}
                         <li class="upcoming-event">
                             <div class="image"><img src="{{ item.logo }}" alt="logo for upcoming event"></div>
@@ -123,13 +122,13 @@ eleventyImport:
             {% endif %}
             <section class="sponsors section"><a id="sponsors"></a>
                 <header>Sponsors</header>
-                <article>
+                <article class="site-content">
                     <img src="https://fsmb.s3.ca-central-1.amazonaws.com/sponsors/looking-for-sponsors.png" alt="We are looking for sponsors."/>
                 </article>
             </section>
             <section class="contact-us section"><a id="contact-us"></a>
                 <header>Contact Us</header>
-                <article>
+                <article class="site-content">
                     <div class="message">Looking to reach out directly to the Full Stack MB board? Click on the board member to ask
                     your query.</div>
                     <div class="members">
@@ -143,6 +142,15 @@ eleventyImport:
                     </div>
                 </article>
             </main>
+            <footer class="main-footer">
+                <div class="menu">
+                    <a target="_blank" title="Open events page" href="https://www.meetup.com/fullstackmb/events/">Events</a>
+                    <a title="Watch past presentations" href="#watch-us">Videos</a>
+                    <a title="Contact us" href="#contact-us">Contact</a>
+                </div>
+                <div class="copyright">© Full Stack MB 2024</div>
+                <!--<div class="version">2.1.0-e260e78</div>-->
+            </footer>
 
         </body>
     </html>

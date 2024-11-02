@@ -1,13 +1,16 @@
 html, body {
     background: #fdfdfd;
+    color: #444;
     display: flex;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
+    min-height: 100vh;
 }
 
-header.site-header {
-
+.site-content {
+    max-width: 1200px;
+    margin: 0px auto;
 }
 
 .nav-social {
@@ -24,6 +27,23 @@ header.site-header {
 .nav-social .social-icons {
     display: flex;
     justify-content: space-between;
+}
+
+.logo-menu {
+    height: 70px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    z-index: 98;
+    transition: height .4s ease;
+}
+
+.logo-menu img {
+    max-width: 50px;
 }
 
 main > section > header {
@@ -44,7 +64,9 @@ img {
 
 .next-event .content {
     display: flex;
-    justify-content: space-evenly;   
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .next-event .event-info {
@@ -81,6 +103,30 @@ img {
     justify-content: center;
     align-items: flex-end;
     flex-grow: 2;
+}
+
+.contact-us .site-content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-footer {
+    background: #3c3d41;
+    color: white;
+    text-align: center;
+    padding: 40px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 2;
+}
+
+.main-footer * {
+    margin-bottom: 8px;
+}
+
+.main-footer .menu a {
+    color: white;
 }
 
 /*
@@ -155,7 +201,10 @@ img {
 
 .upcoming-events .items {
     list-style-type: none;
-    display: flex;
+    display: flex;;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;    
 }
 
 .upcoming-event {
