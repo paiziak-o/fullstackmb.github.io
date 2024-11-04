@@ -1,0 +1,26 @@
+name: CI/CD
+
+on:
+    push:
+        branches: 
+            - main
+            - v3
+            - ft/*
+
+jobs:
+    build:
+        name: Build Website
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: lts/*
+
+            - name: Build Site
+              run: |
+                npm install
+                npm run build
