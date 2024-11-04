@@ -1,0 +1,37 @@
+{
+  "name": "fullstackmb-website",
+  "version": "3.0.0-alpha",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf _site",
+    "build": "eleventy",
+    "dev": "eleventy --serve --incremental"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Full Stack Manitoba",
+    "email": "fullstackmb@gmail.com",
+    "url": "https://fullstackmb.ca"
+  },
+  "contributors": [
+    {
+      "name": "David Wesst",
+      "email": "david@cocobokostudios.com",
+      "url": "https://www.davidwesst.com"
+    },
+    {
+      "name": "Shane Charles",
+      "email": "shanecharles@burningicesolutions.com"
+    }
+  ],
+  "license": "MIT",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-fetch": "^4.0.1"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
+}

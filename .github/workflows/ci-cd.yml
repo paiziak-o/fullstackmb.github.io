@@ -1,0 +1,59 @@
+name: CI/CD
+
+on:
+    push:
+        branches: 
+            - master
+            - ft/*
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+    build:
+        name: Build Website
+        runs-on: ubuntu-latest
+
+        env:
+          PATH_PREFIX: /
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: lts/*
+
+            - name: Build Site
+              run: |
+                npm install
+                npm run build -- --pathprefix $PATH_PREFIX
+
+            - name: Upload Site Files as Artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: _site/
+                retention-days: 2
+
+    deploy:
+      name: Deploy to GitHub Pages
+      if: github.ref_name == 'master'
+      needs: build
+      runs-on: ubuntu-latest
+
+      environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+
+      steps:
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v4

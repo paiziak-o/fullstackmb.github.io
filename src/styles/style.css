@@ -1,0 +1,275 @@
+html, body {
+    background: #fdfdfd;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.site-content {
+    max-width: 1200px;
+    margin: 0px auto;
+}
+
+.nav-social {
+    flex-flow: row nowrap;
+    position: static;
+    width: 100%;
+    padding: 10px 0;
+    border-right: none;
+    border-bottom: 1px solid #f4f4f4;
+    transform: translateX(0);
+    transition: none;
+}
+
+.nav-social .social-icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-menu {
+    height: 70px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    z-index: 98;
+    transition: height .4s ease;
+}
+
+.logo-menu img {
+    max-width: 50px;
+    margin-right: 10px;
+}
+
+.logo-menu .motto {
+    max-width: 40%;
+    font-size: 13px;
+}
+
+.logo-menu .motto header {
+    font-size: 18px;
+}
+
+main > section > header {
+    align-items: center;
+    background-color: rgb(28, 60, 97);
+    color: white;
+    display: flex;
+    font-size: 15px;
+    height: 45px;
+    justify-content: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+img {
+    max-width: 100%;
+}
+
+.next-event .content {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.next-event .title, .next-event .description, .next-event .details {
+    margin-left: 10px;
+}
+
+.next-event .details * {
+    display: flex;
+    flex-direction: row;
+}
+
+.next-event .icon {
+    width: 20px;
+}
+
+.next-event .address {
+    margin: 0 4px;
+}
+
+.next-event .event-info {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+}
+
+.next-event footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-event > article {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+}
+
+
+.next-event .title {
+    font-size: 30px;
+}
+
+.next-event .description {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 1em;
+}
+
+.next-event .call-to-action {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-grow: 2;
+}
+
+.contact-us .site-content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-footer {
+    background: #3c3d41;
+    color: white;
+    text-align: center;
+    padding: 40px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 2;
+}
+
+.main-footer * {
+    margin-bottom: 8px;
+}
+
+.main-footer .menu a {
+    color: white;
+}
+
+/*
+    Controls
+*/
+.sm-link {
+    display: flex;
+    flex: 1;
+    flex-flow: row;
+    align-items: center;
+    margin-bottom: 0;
+    font-size: 10px;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.sm-link > span {
+    color: white;
+}
+
+.button {
+    display: inline-block;
+    min-width: 100px;
+    font-size: 12px;
+    line-height: 30px;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    background-color: #50e3c2;
+    color: white;
+}
+
+.button.-large {
+    min-width: 140px;
+    font-size: 13px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    padding: 0 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    background-color: #50e3c2;
+    color: white;
+}
+
+.button.-outline {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.info > .date {
+    font-size: 12px;
+    color: #737a94;
+}
+
+.info > .title {
+    font-size: 15px;
+    line-height: 1.1;
+    margin-bottom: 1em;
+}
+
+.upcoming-events .items {
+    list-style-type: none;
+    display: flex;;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+}
+
+.upcoming-event {
+    text-align: center;
+    padding: 0 7.5px;
+    width: 25%;
+}
+
+.upcoming-event > .info {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background: #0e1e38;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.color-slack {
+    color: #5D3A58;
+}
+
+.color-linkedin {
+    color: #0073b1
+}
+
+.color-github {
+    color: black;
+}
+
+.color-youtube {
+    color: #ff0000
+}
+
+.color-meetup {
+    color: #f64060;
+}
+
+.color-newsletter {
+    color: #1c3c61;
+}

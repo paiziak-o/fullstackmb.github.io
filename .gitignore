@@ -1,1 +1,6 @@
-*.swp
+# ignore npm modules
+node_modules/
+
+# ignore eleventy output and assets
+_site/
+.cache

@@ -1,3 +1,8 @@
+html, body {
+  display: flex;
+  flex-direction: column;
+}
+
 .loading, .section > header, .next-event.summer article, .next-event.winter article {
   display: flex;
   align-items: center;
@@ -38,7 +43,10 @@ html, body {
 
 .container {
   margin: 0 auto;
-  position: relative; }
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
   .container:before {
     content: "";
     display: table; }
@@ -271,7 +279,6 @@ body {
   left: 0;
   width: 40%;
   min-width: 240px;
-  height: 200%;
   z-index: 100;
   padding: 0 15px;
   background-color: white;
@@ -389,7 +396,6 @@ body {
     z-index: 1;
     cursor: pointer; }
   .slack-form .form-group > input {
-    height: 100%;
     padding: 2px 4px;
     z-index: 0;
     font-size: 12px;
