@@ -3,8 +3,7 @@ name: CI/CD
 on:
     push:
         branches: 
-            - main
-            - v3
+            - master
             - ft/*
 
 permissions:
