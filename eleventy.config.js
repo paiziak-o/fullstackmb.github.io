@@ -1,4 +1,7 @@
-export default async function(eleventyConfig) {
+import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+
+export default async function (eleventyConfig) {
+    // input directory
     eleventyConfig.setInputDirectory("src");
 
     // passthroughs are relative to root not input directory
@@ -15,6 +18,9 @@ export default async function(eleventyConfig) {
             "src/**/*.js"
         ]
     });
+
+    // enable HtmlBase plugin
+    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 };
 
 export const config = {};
