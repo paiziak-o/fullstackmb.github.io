@@ -1,10 +1,11 @@
 name: CI/CD
 
 on:
-    push:
-        branches: 
-            - master
-            - ft/*
+  push:
+    branches: 
+    - 'main'
+    - 'ft/*'
+    - 'hf/*'
 
 permissions:
   contents: read
