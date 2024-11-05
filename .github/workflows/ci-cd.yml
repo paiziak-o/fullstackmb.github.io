@@ -6,6 +6,8 @@ on:
     - 'main'
     - 'ft/*'
     - 'hf/*'
+  schedule:
+    - cron: 0 2 * * *
 
 permissions:
   contents: read
