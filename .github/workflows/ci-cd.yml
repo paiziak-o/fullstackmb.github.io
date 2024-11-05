@@ -48,7 +48,7 @@ jobs:
 
     deploy:
       name: Deploy to GitHub Pages
-      if: github.ref_name == 'master'
+      if: github.ref_name == 'main'
       needs: build
       runs-on: ubuntu-latest
 
