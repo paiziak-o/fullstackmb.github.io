@@ -1,43 +1,58 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const emailInput = document.getElementById('email');
-  const signUpButton = document.getElementById('signUpButton');
-
-  signUpButton.addEventListener('click', () => {
-      const email = emailInput.value;
+$(document).ready(() => {
+    const $emailInput = $('#email');
+    const $signUpButton = $('#signUpButton');
+    let isSubmitting = false;
+  
+    // Prevent form submission
+    $('.slack-signup-form').on('submit', (e) => {
+      e.preventDefault();
+    });
+  
+    $signUpButton.on('click', async () => {
+      const email = $emailInput.val();
       
-      if (email && email.includes('@')) {
-          const config = {
-              headers: {
-                  'Content-Type': 'text/json'
-              }
-          };
-          
-          axios.post("https://fullstackmbapi.azurewebsites.net/api/slack",
-              JSON.stringify({"email": email}), config)
-              .then(response => {
-                  if (response.data.ok) {
-                      new PNotify({
-                          type: 'success',
-                          text: `You should receive an email to the address '${email}' below shortly!`
-                      });
-                      emailInput.value = '';
-                  } else {
-                      new PNotify({type: 'warning', text: response.data.error})
-                  }
-                  console.log(response.data);
-              })
-              .catch(error => {
-                  console.error(error);
-                  new PNotify({type: "error", text: error})
-              });
-      } else {
-          new PNotify({text: 'Please enter a valid email.'}) 
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!email || !emailRegex.test(email)) {
+        new PNotify({text: 'Please enter a valid email.'});
+        return;
       }
+  
+      if (isSubmitting) return;
+  
+      isSubmitting = true;
+      $signUpButton.prop('disabled', true)
+                   .text('Sending...');
+  
+      try {
+        const response = await $.ajax({
+          url: 'https://fullstackmbapi.azurewebsites.net/api/slack',
+          type: 'POST',
+          data: JSON.stringify({ email }),
+          contentType: 'application/json', // Changed from text/json
+          dataType: 'json'
+        });
+  
+        if (response.ok) {
+          new PNotify({
+            type: 'success',
+            text: `You should receive an email to the address '${email}' shortly!`
+          });
+        } else {
+          new PNotify({
+            type: 'warning', 
+            text: response.error || 'An error occurred while processing your request.'
+          });
+        }
+      } catch (error) {
+        new PNotify({
+          type: "error", 
+          text: 'An error occurred while processing your request.'
+        });
+      } finally {
+        isSubmitting = false;
+        $signUpButton.prop('disabled', false)
+                     .text('Join Community');
+        $emailInput.val('');
+      }
+    });
   });
-
-  // Handle button disabled state
-  emailInput.addEventListener('input', () => {
-      const email = emailInput.value;
-      signUpButton.disabled = !(email && email.includes('@'));
-  });
-});
