@@ -4,8 +4,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf _site",
-    "build": "eleventy",
-    "dev": "eleventy --serve --incremental",
+    "start": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental --quiet",
+    "dev": "npm run build:ts && tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --watch --incremental",
+    "build": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts",
+    "dev:watch": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --watch --incremental",
+    "build:ts": "tsc",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:debug": "playwright test --debug"
@@ -29,17 +32,28 @@
     {
       "name": "Amir Barylko",
       "email": "amir@barylko.com"
+    },
+    {
+      "name": "Oleksandr Paiziak",
+      "email": "paiziak.o@gmail.com"
     }
   ],
   "license": "MIT",
   "description": "",
   "type": "module",
   "dependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-fetch": "^4.0.1"
+    "@11ty/eleventy-fetch": "^4.0.1",
+    "class-variance-authority": "^0.7.0",
+    "jsx-async-runtime": "^0.1.8"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
     "@playwright/test": "^1.48.2",
-    "rimraf": "^6.0.1"
+    "@testing-library/dom": "^10.0.0",
+    "happy-dom": "^14.7.1",
+    "prettier": "^3.2.5",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.7.2",
+    "vitest": "^1.5.0"
   }
 }
