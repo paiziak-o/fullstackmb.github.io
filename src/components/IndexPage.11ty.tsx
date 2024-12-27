@@ -33,8 +33,10 @@ export function IndexPage({ events, version }: { events: Event[], version: { ver
 
   return (
     <div>
-    <Header />
-    <Hero />
+    <Hero 
+      text="Serverless enthusiasts crafting the future with lambdas and microservices." 
+      title="Full Stack MB" 
+    />
 
     <section class="section bg-gray">
       <div class="container">
@@ -104,7 +106,6 @@ export function IndexPage({ events, version }: { events: Event[], version: { ver
 
     {/* <Friends /> */}
 
-    <Footer version={version} />
   </div>
   )
 }

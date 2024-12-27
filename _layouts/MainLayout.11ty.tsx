@@ -1,8 +1,24 @@
-import { IndexPage } from "@components/IndexPage.11ty";
+import { IndexPage } from '@components/IndexPage.11ty';
 import { ViewProps } from "../eleventy";
+import { SlackPage } from '@components/SlackPage.11ty';
+import { Header } from '@components/partials/common/Header';
+import { Footer } from '@components/partials/common/Footer';
 
 
-export function MainLayout({ content, title, events, version }: ViewProps): JSX.Element {
+export function MainLayout({ content, title, events, version, component = 'index' }: ViewProps): JSX.Element {
+
+  const getComponent = () => {
+    switch (component) {
+      case "index":
+        return <IndexPage events={events} version={version} />;
+      case "slack":
+        return <SlackPage version={version} />;
+      default:
+        return <IndexPage events={events} version={version} />;
+    }
+  };
+
+
   return (
     <html lang="en">
        
@@ -16,8 +32,10 @@ export function MainLayout({ content, title, events, version }: ViewProps): JSX.
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css" />
       </head>
       <body>
+        <Header />
+        {getComponent()}
 
-        <IndexPage events={events} version={version} />
+        <Footer version={version} />
       </body>
     </html>
   );

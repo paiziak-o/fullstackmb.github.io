@@ -8,4 +8,5 @@ export type ViewProps = {
     version: string;
     hash: string;
   };
+  component?: string;
 };

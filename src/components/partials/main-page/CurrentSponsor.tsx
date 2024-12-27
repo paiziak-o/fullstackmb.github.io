@@ -6,7 +6,7 @@ interface CurrentSponsorProps {
 }
 
 export const CurrentSponsor = ({
-  logo = "images/net.png",
+  logo = "/images/net.png",
   name = ".NET Foundation",
   description = "Helping keep Full Stack Manitoba connected through meetup.com and with other user groups from across North America.",
   link = "https://dotnetfoundation.org/"
