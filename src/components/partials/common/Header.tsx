@@ -29,7 +29,7 @@ export const Header = ({}: HeaderProps) => {
           </a>
           <div class="logo-text">
             <h1>Full Stack MB</h1>
-            <p class="logo-subtitle">Serverless Go-Getters</p>
+            <p class="logo-subtitle">Tech Enthusiasts & Innovators</p>
           </div>
         </div>
         <Menu />

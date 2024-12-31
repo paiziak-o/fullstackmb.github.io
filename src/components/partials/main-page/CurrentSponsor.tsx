@@ -13,7 +13,6 @@ export const CurrentSponsor = ({
 }: CurrentSponsorProps) => {
   return (
     <div class="sponsor-card current">
-      <h3>Current Sponsor</h3>
       <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
         <img
           src={logo}
@@ -27,7 +26,7 @@ export const CurrentSponsor = ({
           <p>{description}</p>
         </div>
       </div>
-      <a href={link} class="button button-outline upcoming-event-button">
+      <a href={link} class="button button-primary upcoming-event-button">
         Visit {name}
       </a>
     </div>

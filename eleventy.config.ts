@@ -17,7 +17,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./pages/**/*");
   eleventyConfig.addWatchTarget("./_data/**/*");
   eleventyConfig.addPassthroughCopy("src/styles");
+  eleventyConfig.addPassthroughCopy("src/components/client");
   eleventyConfig.addPassthroughCopy({ "public/images": "images" });
+  eleventyConfig.addPassthroughCopy("assets");
 
    // Add this new collection
    eleventyConfig.addGlobalData("events", async function() {
@@ -94,5 +96,8 @@ export default function (eleventyConfig) {
     pathPrefix: "/",
     markdownTemplateEngine: false,
     htmlTemplateEngine: false,
+    server: {
+      port: 8080
+    }
   };
 }

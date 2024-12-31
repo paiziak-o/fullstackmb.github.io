@@ -28,6 +28,7 @@ export function MainLayout({ content, title, events, version, component = 'index
   
         <title>{title}</title>
         <link rel="stylesheet" type="text/css" href="/src/styles/globals.css" />
+       
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css" />
       </head>
@@ -36,6 +37,7 @@ export function MainLayout({ content, title, events, version, component = 'index
         {getComponent()}
 
         <Footer version={version} />
+        <script type="module" src="/assets/client-bundle.js"></script>
       </body>
     </html>
   );

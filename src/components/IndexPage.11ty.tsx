@@ -92,7 +92,7 @@ export function IndexPage({ events, version }: { events: Event[], version: { ver
               <div class="event-card-content">
                 <h3>{event.title}</h3>
                 <p>{formatDate(event.date)}</p>
-                <a href={event.link} target="_blank" class="button button-outline upcoming-event-button">
+                <a href={event.link} target="_blank" class="button button-primary upcoming-event-button">
                   View
                 </a>
               </div>

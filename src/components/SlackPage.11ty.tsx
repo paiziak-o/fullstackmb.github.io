@@ -1,6 +1,6 @@
 
 import { Hero } from './partials/main-page/Hero';
-import { SlackInviteForm } from './slack/SlackInviteForm';
+// import { SlackInviteForm } from './client/SlackInviteForm';
 import { WhyJoinSlack } from './slack/WhyJoinSlack';
 
 export function SlackPage() {
@@ -14,7 +14,7 @@ export function SlackPage() {
 
     <section class="section bg-white">
       <div class="container">
-        <SlackInviteForm />
+        <div data-react-mount="slack-form"></div>
       </div>
     </section>
     

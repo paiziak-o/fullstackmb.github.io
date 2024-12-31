@@ -36,8 +36,7 @@ const FooterBranding = () => (
     />
     <h2 style={{ marginTop: '16px' }}>Full Stack MB</h2>
     <p style={{ marginTop: '16px', color: '#a0aec0' }}>
-      A dynamic group of serverless go-getters who see sharp in the folds of
-      lambdas, microservices, and rainbows! Sandwich!
+      A dynamic community of tech enthusiasts and innovators, bringing together professionals across various stacks and roles in the ever-evolving world of technology.
     </p>
     <div class="footer-social-links">
       {navLinks.map((link) => (

@@ -5,7 +5,10 @@
   "scripts": {
     "clean": "rimraf _site",
     "start": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental --quiet",
-    "dev": "npm run build:ts && tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --watch --incremental",
+    "dev": "npm run build:client && concurrently \"npm run dev:eleventy\" \"npm run watch:client\"",
+    "dev:eleventy": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve",
+    "build:client": "node build-client.js",
+    "watch:client": "node build-client.js --watch",
     "build": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts",
     "dev:watch": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --watch --incremental",
     "build:ts": "tsc",
@@ -43,13 +46,21 @@
   "type": "module",
   "dependencies": {
     "@11ty/eleventy-fetch": "^4.0.1",
+    "child_process": "^1.0.2",
     "class-variance-authority": "^0.7.0",
-    "jsx-async-runtime": "^0.1.8"
+    "jsx-async-runtime": "^0.1.8",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-toastify": "^11.0.2",
+    "url": "^0.11.4"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@playwright/test": "^1.48.2",
     "@testing-library/dom": "^10.0.0",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.24.2",
     "happy-dom": "^14.7.1",
     "prettier": "^3.2.5",
     "rimraf": "^6.0.1",

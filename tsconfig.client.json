@@ -4,19 +4,17 @@
     "target": "ES2015",
     "moduleResolution": "Node",
     "outDir": "_site",
-    "strict": false,
+    "strict": true, // Enforce type safety
     "jsx": "react-jsx",
-    "jsxImportSource": "jsx-async-runtime",
+    "jsxImportSource": "react",
     "skipLibCheck": true,
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"]
     }
   },
-  "include": ["src", "_layouts", "pages"],
+  "include": ["src/components/client/**/*"],
   "exclude": ["node_modules", "_site"]
 }
