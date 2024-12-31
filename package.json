@@ -9,7 +9,7 @@
     "dev:eleventy": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve",
     "build:client": "node build-client.js",
     "watch:client": "node build-client.js --watch",
-    "build": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts",
+    "build": "npm run build:client && tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts",
     "dev:watch": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --watch --incremental",
     "build:ts": "tsc",
     "test:e2e": "playwright test",
