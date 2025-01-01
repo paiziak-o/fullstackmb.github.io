@@ -1,7 +1,8 @@
-import { renderToString } from "jsx-async-runtime";
-import path from "path";
-import { fileURLToPath } from "url";
+import { renderToString } from 'jsx-async-runtime';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { exec } from 'child_process';
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let isRebuilding = false;
@@ -12,30 +13,29 @@ const isDev = process.argv.some(arg =>
 );
 
 export default function (eleventyConfig) {
-  eleventyConfig.addWatchTarget("./src/**/*");
-  eleventyConfig.addWatchTarget("./_layouts/**/*");
-  eleventyConfig.addWatchTarget("./pages/**/*");
-  eleventyConfig.addWatchTarget("./_data/**/*");
-  eleventyConfig.addPassthroughCopy("src/styles");
-  eleventyConfig.addPassthroughCopy("src/components/client");
-  eleventyConfig.addPassthroughCopy({ "public/images": "images" });
-  eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addWatchTarget('./src/**/*');
+  eleventyConfig.addWatchTarget('./pages/**/*');
+  eleventyConfig.addWatchTarget('./src/_data/**/*');
+  eleventyConfig.addPassthroughCopy('src/styles');
+  eleventyConfig.addPassthroughCopy('src/components/client');
+  eleventyConfig.addPassthroughCopy({ 'public/images': 'images' });
+  eleventyConfig.addPassthroughCopy('assets');
 
    // Add this new collection
-   eleventyConfig.addGlobalData("events", async function() {
+   eleventyConfig.addGlobalData('events', async function() {
     // Get the events data
-    const events = await import("./_data/events.js");
+    const events = await import('./src/_data/events.js');
     return events.default ? await events.default() : [];
   });
 
-   eleventyConfig.addGlobalData("version", async function() {
+   eleventyConfig.addGlobalData('version', async function() {
     // Get the events data
-    const version = await import("./_data/version.js");
+    const version = await import('./src/_data/version.js');
     return version.default ? await version.default() : [];
   });
 
-  eleventyConfig.addExtension(["11ty.jsx", "11ty.tsx", ".tsx"], {
-    key: "11ty.js",
+  eleventyConfig.addExtension(['11ty.jsx', '11ty.tsx', '.tsx'], {
+    key: '11ty.js',
     compile: async (str, inputPath) => {
       
       return async (data) => {
@@ -88,12 +88,12 @@ export default function (eleventyConfig) {
   return {
     ...eleventyConfig,
     dir: {
-      input: "./pages",
-      layouts: "../_layouts",
-      output: "_site",
-      data: "_data",
+      input: './pages',
+      layouts: '../src/_layouts',
+      output: '_site',
+      data: './src/_data',
     },
-    pathPrefix: "/",
+    pathPrefix: '/',
     markdownTemplateEngine: false,
     htmlTemplateEngine: false,
     server: {

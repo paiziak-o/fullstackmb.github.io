@@ -3,10 +3,10 @@ interface SponsorBenefit {
 }
 
 const sponsorBenefits: SponsorBenefit[] = [
-  { text: "Logo placement on our website" },
-  { text: "Mention in our events" },
-  { text: "Opportunity to present at our meetups" },
-  { text: "Access to our talent pool" }
+  { text: 'Logo placement on our website' },
+  { text: 'Mention in our events' },
+  { text: 'Opportunity to present at our meetups' },
+  { text: 'Access to our talent pool' },
 ];
 
 interface BecomeSponsorProps {
@@ -15,8 +15,8 @@ interface BecomeSponsorProps {
 }
 
 export const BecomeSponsor = ({
-  description = "Support the Full Stack MB community and gain visibility among talented developers. We offer various sponsorship packages to suit your needs.",
-  contactLink = "#"
+  description = 'Support the Full Stack MB community and gain visibility among talented developers. We offer various sponsorship packages to suit your needs.',
+  contactLink = '#',
 }: BecomeSponsorProps) => {
   return (
     <div class="sponsor-card dark">

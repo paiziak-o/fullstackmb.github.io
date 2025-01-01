@@ -1,4 +1,4 @@
-import { navLinks } from "./Menu";
+import { navLinks } from './Menu';
 
 interface FooterProps {
   version: {
@@ -19,19 +19,17 @@ interface QuickLink {
 }
 
 const quickLinks: QuickLink[] = [
-  { href: "#", label: "About Us" },
-  { href: "#", label: "Events" },
-  { href: "#", label: "Sponsors" },
-  { href: "#", label: "Contact" },
+  { href: '/about', label: 'About Us' },
+  { href: '/events', label: 'Events' },
+  { href: '/sponsors', label: 'Sponsors' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const FooterBranding = () => (
-  <div>
+  <div class="footer-branding">
     <img
       src="https://fullstackmb.ca/images/logo.png"
       alt="Full Stack MB Logo"
-      width={48}
-      height={48}
       class="rounded"
     />
     <h2 style={{ marginTop: '16px' }}>Full Stack MB</h2>

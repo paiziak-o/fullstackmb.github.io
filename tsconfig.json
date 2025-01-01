@@ -17,6 +17,6 @@
       "@components/*": ["src/components/*"]
     }
   },
-  "include": ["src", "_layouts", "pages"],
+  "include": ["src", "src/_layouts", "pages"],
   "exclude": ["node_modules", "_site"]
 }

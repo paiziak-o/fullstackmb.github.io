@@ -1,23 +1,22 @@
 import { IndexPage } from '@components/IndexPage.11ty';
-import { ViewProps } from "../eleventy";
+import { ViewProps } from '../../eleventy';
 import { SlackPage } from '@components/SlackPage.11ty';
 import { Header } from '@components/partials/common/Header';
 import { Footer } from '@components/partials/common/Footer';
 
 
-export function MainLayout({ content, title, events, version, component = 'index' }: ViewProps): JSX.Element {
+export const MainLayout = ({ title, events, version, component = 'index' }: ViewProps): JSX.Element => {
 
   const getComponent = () => {
     switch (component) {
-      case "index":
-        return <IndexPage events={events} version={version} />;
-      case "slack":
+      case 'index':
+        return <IndexPage events={events} />;
+      case 'slack':
         return <SlackPage version={version} />;
       default:
-        return <IndexPage events={events} version={version} />;
+        return <IndexPage events={events} />;
     }
   };
-
 
   return (
     <html lang="en">
@@ -25,6 +24,7 @@ export function MainLayout({ content, title, events, version, component = 'index
       <head>
         <meta charSet="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
         <title>{title}</title>
         <link rel="stylesheet" type="text/css" href="/src/styles/globals.css" />
@@ -37,7 +37,7 @@ export function MainLayout({ content, title, events, version, component = 'index
         {getComponent()}
 
         <Footer version={version} />
-        <script type="module" src="/assets/client-bundle.js"></script>
+        <script type="module" src={`/assets/client-bundle.js?v=${Date.now()}`}></script>
       </body>
     </html>
   );

@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom/client';
 import { SlackInviteForm } from './SlackInviteForm';
 import { ToastContainer } from 'react-toastify';
+import { MobileMenu } from './MobileMenu';
 
-// Find the mount point
-const mountPoint = document.querySelector('[data-react-mount="slack-form"]');
+// Find the mount point Slack Invite Form
+const slackMountPoint = document.querySelector('[data-react-mount="slack-form"]');
 
-if (mountPoint) {
-  ReactDOM.createRoot(mountPoint).render(
+if (slackMountPoint) {
+  ReactDOM.createRoot(slackMountPoint).render(
     <>
       <SlackInviteForm />
       <ToastContainer
@@ -17,5 +18,15 @@ if (mountPoint) {
       />
     </>
   );
-  console.log('React component mounted');
+}
+
+// Find the mount Mobile Menu
+const mobileMountPoint = document.querySelector('[data-react-mount="mobile-menu"]');
+
+if (mobileMountPoint) {
+  ReactDOM.createRoot(mobileMountPoint).render(
+    <>
+      <MobileMenu onClose={() => {}} />
+    </>
+  );
 }

@@ -6,14 +6,14 @@ interface CurrentSponsorProps {
 }
 
 export const CurrentSponsor = ({
-  logo = "/images/net.png",
-  name = ".NET Foundation",
-  description = "Helping keep Full Stack Manitoba connected through meetup.com and with other user groups from across North America.",
-  link = "https://dotnetfoundation.org/"
+  logo = '/images/net.png',
+  name = '.NET Foundation',
+  description = 'Helping keep Full Stack Manitoba connected through meetup.com and with other user groups from across North America.',
+  link = 'https://dotnetfoundation.org/',
 }: CurrentSponsorProps) => {
   return (
     <div class="sponsor-card current">
-      <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
+      <div class="sponsor-card-content">
         <img
           src={logo}
           alt={`${name} Logo`}

@@ -1,14 +1,12 @@
-import EleventyFetch from "@11ty/eleventy-fetch";
+import EleventyFetch from '@11ty/eleventy-fetch';
 
 export default async function () {
-  console.log('Starting to fetch events...');
-  const eventsApiUrl = "https://fullstackmbapi.azurewebsites.net/api/events";
+  const eventsApiUrl = 'https://fullstackmbapi.azurewebsites.net/api/events';
 
   try {
-    console.log('Fetching from:', eventsApiUrl);
     const data = await EleventyFetch(eventsApiUrl, {
-      duration: "1h", // Cache for 1 hour
-      type: "json",
+      duration: '1h', // Cache for 1 hour
+      type: 'json',
       verbose: true
     });
 
@@ -35,6 +33,7 @@ export default async function () {
       console.error('Error message:', error.message);
       console.error('Error stack:', error.stack);
     }
+    
     return [];
   }
 }

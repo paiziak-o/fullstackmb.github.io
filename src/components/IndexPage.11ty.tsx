@@ -1,8 +1,6 @@
-import { formatDate } from "src/lib";
-import { Header } from "./partials/common/Header";
-import { Hero } from "./partials/main-page/Hero";
-import { Footer } from "./partials/common/Footer";
-import { Sponsors } from "./partials/main-page/Sponsors";
+import { formatDate } from 'src/lib';
+import { Hero } from './partials/main-page/Hero';
+import { Sponsors } from './partials/main-page/Sponsors';
 // import { Friends } from "./partials/main-page/Friends";
 
 interface Venue {
@@ -23,7 +21,7 @@ export interface Event {
   venue: Venue;
 }
 
-export function IndexPage({ events, version }: { events: Event[], version: { version: string, hash: string } }) {
+export function IndexPage({ events }: { events: Event[] }) {
   const nextEvent = events[0];
   const upcomingEvents = events.slice(1);
 
@@ -62,12 +60,10 @@ export function IndexPage({ events, version }: { events: Event[], version: { ver
                 Count me in!
               </a>
             </div>
-            <div>
+            <div class="event-image-container">
               <img
                 src={nextEvent.logo}
                 alt="Event banner"
-                width={500}
-                height={300}
                 class="rounded"
               />
             </div>

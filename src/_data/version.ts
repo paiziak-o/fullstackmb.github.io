@@ -22,7 +22,7 @@ export default async function () {
   try {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
-    const packagePath = join(__dirname, '../package.json');
+    const packagePath = join(__dirname, '../../package.json');
     const packageJson = readFileSync(packagePath, 'utf-8');
     pkg = JSON.parse(packageJson);
   } catch (e) {

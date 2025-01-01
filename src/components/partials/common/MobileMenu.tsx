@@ -2,7 +2,6 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
-
 export const MobileMenu = ({ onClose }: MobileMenuProps) => {
   return (
     <div class="mobile-menu">

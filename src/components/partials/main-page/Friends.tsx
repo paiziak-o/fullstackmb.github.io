@@ -7,23 +7,23 @@ interface Friend {
 
 const friendsData: Friend[] = [
   {
-    name: "Winnipeg .NET User Group",
-    description: "A community of .NET developers in Winnipeg",
-    logo: "/placeholder.svg",
-    link: "#"
+    name: 'Winnipeg .NET User Group',
+    description: 'A community of .NET developers in Winnipeg',
+    logo: '/placeholder.svg',
+    link: '#',
   },
   {
-    name: "Tiny Bison Venture",
-    description: "Premier developer conference in the Canadian prairies",
-    logo: "/placeholder.svg",
-    link: "#"
+    name: 'Tiny Bison Venture',
+    description: 'Premier developer conference in the Canadian prairies',
+    logo: '/placeholder.svg',
+    link: '#',
   },
   {
-    name: "Ruby and Rails",
-    description: "Ruby and Rails enthusiasts in Winnipeg",
-    logo: "/placeholder.svg",
-    link: "#"
-  }
+    name: 'Ruby and Rails',
+    description: 'Ruby and Rails enthusiasts in Winnipeg',
+    logo: '/placeholder.svg',
+    link: '#',
+  },
 ];
 
 const FriendCard = ({ 
@@ -59,7 +59,7 @@ interface FriendsProps {
 
 export const Friends = ({ 
   friends = friendsData,
-  title = "Friend of Full Stack MB"
+  title = 'Friend of Full Stack MB',
 }: FriendsProps) => {
   return (
     <section class="section bg-white">

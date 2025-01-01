@@ -1,7 +1,6 @@
 
 import { Hero } from './partials/main-page/Hero';
-// import { SlackInviteForm } from './client/SlackInviteForm';
-import { WhyJoinSlack } from './slack/WhyJoinSlack';
+import { WhyJoinSlack } from './partials/slack/WhyJoinSlack';
 
 export function SlackPage() {
 
@@ -23,8 +22,6 @@ export function SlackPage() {
         <WhyJoinSlack />
       </div>
     </section>
-     
- 
   </div>
   )
 }
