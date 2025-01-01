@@ -4,14 +4,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf _site",
-    "start": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental --quiet",
-    "dev": "npm run build:client && concurrently \"npm run dev:eleventy\" \"npm run watch:client\"",
+    "dev": "npm run client:build && concurrently \"npm run dev:eleventy\" \"npm run client:watch\"",
     "dev:eleventy": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve",
-    "build:client": "node build-client.js",
-    "watch:client": "node build-client.js --watch",
-    "build": "npm run build:client && tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts",
-    "dev:watch": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --watch --incremental",
-    "build:ts": "tsc",
+    "client:build": "node build-client.js",
+    "client:watch": "node build-client.js --watch",
+    "build": "npm run client:build && tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:debug": "playwright test --debug"
