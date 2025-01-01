@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "ES2015",
+    "target": "ES2015",
+    "moduleResolution": "Node",
+    "outDir": "_site",
+    "strict": false,
+    "jsx": "react-jsx",
+    "jsxImportSource": "jsx-async-runtime",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"]
+    }
+  },
+  "include": ["src", "src/_layouts", "pages"],
+  "exclude": ["node_modules", "_site"]
+}
