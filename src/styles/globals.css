@@ -29,12 +29,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .logo-section {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -49,6 +51,7 @@ body {
 .nav-links {
   display: flex;
   gap: 24px;
+  margin-left: auto;
 }
 
 .nav-link {
@@ -349,6 +352,7 @@ body {
 @media (max-width: 768px) {
   img {
     width: 100%;
+    height: auto;
   }
 
   .nav-links {
