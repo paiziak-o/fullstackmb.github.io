@@ -36,7 +36,7 @@ export function IndexPage({ events }: { events: Event[] }) {
       title="Full Stack MB" 
     />
 
-    <section class="section bg-gray">
+    <section class="section bg-gray next-event">
       <div class="container">
         <h2 class="section-title">Next Event</h2>
         <div class="event-card">
