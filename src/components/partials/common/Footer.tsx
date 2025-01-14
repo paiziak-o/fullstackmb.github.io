@@ -28,7 +28,7 @@ const quickLinks: QuickLink[] = [
 const FooterBranding = () => (
   <div class="footer-branding">
     <img
-      src="https://fullstackmb.ca/images/logo.png"
+      src="/images/logo.png"
       alt="Full Stack MB Logo"
       class="rounded"
     />
