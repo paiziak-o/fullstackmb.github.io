@@ -40,7 +40,7 @@ export default function (eleventyConfig) {
       
       return async (data) => {
         try {
-          if (inputPath.includes('_layouts') && isDev) {
+          if (inputPath.includes('src/') && isDev) {
             
             try {
               // Use execSync instead of exec

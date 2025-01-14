@@ -290,6 +290,36 @@ body {
   width: 48px;
 }
 
+.footer-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 16px;
+}
+
+.footer-contact-links .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a0aec0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-contact-links .nav-link:hover {
+  color: white;
+}
+
+.footer-title {
+  margin-top: 16px;
+  color: white;
+}
+
+.footer-description {
+  margin-top: 16px;
+  color: #a0aec0;
+  line-height: 1.6;
+}
+
 .join-our-community-button {
   margin-top: 24px;
 }
@@ -382,11 +412,11 @@ body {
   .mobile-menu-button {
     display: block;
   }
+
+  .footer-grid {
+    gap: 24px;
+  }
 }
-
-
-
-
 
 .why-join-slack {
   padding: 80px 0;

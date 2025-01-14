@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { navLinks } from "../partials/common/Menu";
+import { navLinks } from "../../constants/menu";
 
 interface MobileMenuProps {
   onClose: () => void;

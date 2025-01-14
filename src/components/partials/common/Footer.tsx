@@ -1,4 +1,4 @@
-import { navLinks } from './Menu';
+import { contactNavLinks, navLinks } from '../../../constants/menu';
 
 interface FooterProps {
   version: {
@@ -32,8 +32,8 @@ const FooterBranding = () => (
       alt="Full Stack MB Logo"
       class="rounded"
     />
-    <h2 style={{ marginTop: '16px' }}>Full Stack MB</h2>
-    <p style={{ marginTop: '16px', color: '#a0aec0' }}>
+    <h2 class="footer-title">Full Stack MB</h2>
+    <p class="footer-description">
       A dynamic community of tech enthusiasts and innovators, bringing together professionals across various stacks and roles in the ever-evolving world of technology.
     </p>
     <div class="footer-social-links">
@@ -62,8 +62,14 @@ const FooterQuickLinks = () => (
 const FooterContact = () => (
   <div>
     <h3>Contact Us</h3>
-    <p style={{ color: '#a0aec0', marginTop: '16px' }}>Winnipeg, Manitoba</p>
-    <p style={{ color: '#a0aec0' }}>Email: info@fullstackmb.ca</p>
+    <div class="footer-contact-links">
+      {contactNavLinks.map((link) => (
+        <a href={link.href} class="nav-link" target={link.target}>
+          <i class={`fa ${link.icon}`}></i>
+          {link.label}
+        </a>
+      ))}
+    </div>
     <a href="/slack" class="button button-outline join-our-community-button">
       Join Our Community
     </a>
