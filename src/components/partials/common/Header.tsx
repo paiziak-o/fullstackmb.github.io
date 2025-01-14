@@ -12,7 +12,7 @@ export const Header = ({}: HeaderProps) => {
         <div class="logo-section">
           <a href="/">
             <img
-              src="https://fullstackmb.ca/images/logo.png"
+              src="/images/logo.png"
               alt="Full Stack MB Logo"
               width={32}
               height={32}
