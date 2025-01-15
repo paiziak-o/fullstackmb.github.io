@@ -262,14 +262,24 @@ body {
 }
 
 .footer-links {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 16px;
+  list-style-type: none;
 }
 
 .footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: #a0aec0;
   text-decoration: none;
-  margin-bottom: 8px;
-  display: block;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: white;
 }
 
 .footer-bottom {
@@ -329,6 +339,15 @@ body {
   color: #718096;
   font-size: 14px;
   margin-top: 8px;
+}
+
+/* Document */
+.document > p {
+  margin: 1em;
+}
+
+.document > ul {
+  margin: 1em 2em;
 }
 
 /* Mobile Menu Styles */
