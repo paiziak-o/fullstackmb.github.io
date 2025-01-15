@@ -59,7 +59,7 @@ We expect all community participants (contributors, paid or otherwise; sponsors;
 
 ## 9. Contact Information
 
-If you believe that someone is violating the code of conduct, or have any other concerns, please contact a Full Stack Manitoba organizer immediately.
+If you believe that someone is violating the code of conduct, or have any other concerns, please contact a Full Stack Manitoba organizer immediately. This can be done via Slack or LinkedIn direct messages, or through email at fullstackmb _at_ gmail.com.
 
 ## 10. License and Attribution
 
