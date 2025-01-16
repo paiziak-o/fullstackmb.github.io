@@ -3,9 +3,10 @@ import { ViewProps } from '../../eleventy';
 import { SlackPage } from '@components/SlackPage.11ty';
 import { Header } from '@components/partials/common/Header';
 import { Footer } from '@components/partials/common/Footer';
+import { ContentPage } from '@components/ContentPage.11ty';
 
 
-export const MainLayout = ({ title, events, version, component = 'index' }: ViewProps): JSX.Element => {
+export const MainLayout = ({ content, title, events, version, component }: ViewProps): JSX.Element => {
 
   const getComponent = () => {
     switch (component) {
@@ -14,7 +15,7 @@ export const MainLayout = ({ title, events, version, component = 'index' }: View
       case 'slack':
         return <SlackPage version={version} />;
       default:
-        return <IndexPage events={events} />;
+        return <ContentPage content={content} />;
     }
   };
 

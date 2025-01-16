@@ -19,10 +19,11 @@ interface QuickLink {
 }
 
 const quickLinks: QuickLink[] = [
-  { href: '/about', label: 'About Us' },
+  /*{ href: '/about', label: 'About Us' },
   { href: '/events', label: 'Events' },
   { href: '/sponsors', label: 'Sponsors' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },*/
+  { href: '/code-of-conduct', label: 'Code of Conduct' }
 ];
 
 const FooterBranding = () => (
@@ -48,14 +49,14 @@ const FooterBranding = () => (
 
 const FooterQuickLinks = () => (
   <div>
-    {/* <h3>Quick Links</h3>
+    <h3>Quick Links</h3>
     <ul class="footer-links">
       {quickLinks.map((link) => (
         <li>
           <a href={link.href} class="footer-link">{link.label}</a>
         </li>
       ))}
-    </ul> */}
+    </ul>
   </div>
 );
 
