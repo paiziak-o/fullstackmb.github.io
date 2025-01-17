@@ -380,8 +380,10 @@ body {
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 24px;
+  top: 12px;
   right: 24px;
+  width: 48px;
+  height: 48px;
 }
 
 .mobile-nav-links {
@@ -400,8 +402,28 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   img {
-    width: 100%;
-    height: auto;
+    width: 48px;
+    height: 48px;
+  }
+
+  .header {
+    padding: 12px 0;
+  }
+  
+  .header-content {
+    gap: 8px;
+  }
+  
+  .logo-section {
+    gap: 12px;
+  }
+  
+  .logo-text h1 {
+    font-size: 18px;
+  }
+  
+  .logo-subtitle {
+    font-size: 12px;
   }
 
   .nav-links {
@@ -430,11 +452,15 @@ body {
   
   .mobile-menu-button {
     display: block;
+    width: 48px;
+    height: 48px;
   }
+  
 
   .footer-grid {
     gap: 24px;
   }
+  
 }
 
 .why-join-slack {

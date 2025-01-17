@@ -15,8 +15,6 @@ export const MobileMenu = ({ onClose }: MobileMenuProps) => {
       <button className="mobile-menu-button" onClick={menuToggle}>
         <span className="sr-only">Open menu</span>
         <svg
-          width="24"
-          height="24"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +46,6 @@ export const MobileMenu = ({ onClose }: MobileMenuProps) => {
         <button className="mobile-menu-close" onClick={menuToggle}>
           <span className="sr-only">Close menu</span>
           <svg
-            width="24"
-            height="24"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
