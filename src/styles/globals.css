@@ -103,6 +103,8 @@ body {
   background: white;
   padding: 32px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .event-grid {
@@ -111,9 +113,31 @@ body {
   gap: 32px;
 }
 
+.event-grid img {
+  width: 100%;
+  height: auto;
+}
+
+.event-content {
+  width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.event-content p,
+.event-card-content h3 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
 .event-content h3 {
   font-size: 24px;
   margin-bottom: 16px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .event-meta {
@@ -141,9 +165,11 @@ body {
 }
 
 .event-card-small {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  overflow: hidden;
   transition: all 0.2s ease-in-out;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -518,12 +544,6 @@ body {
     margin-bottom: 32px;
   }
 }
-
-
-
-
-
-
 
 .slack-invite-form {
   padding: 60px 0;
