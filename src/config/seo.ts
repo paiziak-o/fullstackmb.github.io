@@ -25,7 +25,7 @@ const defaultMeta = {
 };
 
 export const seoConfig: SeoConfig = {
-  baseUrl: 'https://fullstackmb-github-io-3t2e.vercel.app',
+  baseUrl: 'https://fullstackmb.ca/',
   defaultMeta,
   pages: {
     [PageComponent.Index]: defaultMeta,
