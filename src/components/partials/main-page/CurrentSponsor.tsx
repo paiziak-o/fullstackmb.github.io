@@ -26,7 +26,11 @@ export const CurrentSponsor = ({
           <p>{description}</p>
         </div>
       </div>
-      <a href={link} class="button button-primary upcoming-event-button">
+      <a 
+        href={link}
+        target="_blank"
+        class="button button-primary upcoming-event-button"
+      >
         Visit {name}
       </a>
     </div>
