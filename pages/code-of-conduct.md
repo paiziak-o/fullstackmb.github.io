@@ -64,5 +64,5 @@ If you believe that someone is violating the code of conduct, or have any other 
 
 ## 10. License and Attribution
 
-This Code of Conduct is adapted from the [Winnipeg.rb Code of Conduct](https://winnipegrb.org/code_of_conduct.html), which is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
+This Code of Conduct is adapted from the <a href="https://winnipegrb.org/code_of_conduct.html" target="_blank">Winnipeg.rb Code of Conduct</a>, which is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
 
